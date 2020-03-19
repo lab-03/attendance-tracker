@@ -1,0 +1,14 @@
+List of the dropped tables:
+    
+    drop_table :Admin
+    drop_table :Student
+    drop_table :Instructor
+    drop_table :InstructorCourse
+    drop_table :InstructorCourseGroup
+    drop_table :StudentCourseGroup
+    drop_table :CourseStudent
+    drop_table :AutomatedAttendance
+
+
+
+

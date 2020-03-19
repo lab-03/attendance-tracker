@@ -1,2 +1,0 @@
-class AutomatedAttendance < ApplicationRecord
-end

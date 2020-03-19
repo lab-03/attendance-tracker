@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-has_and_belongs_to_many :Instructor
-has_and_belongs_to_many :Student
-belongs_to :CourseGroup
+has_and_belongs_to_many :instructor
+has_and_belongs_to_many :student
+belongs_to :coursegroup
 end
