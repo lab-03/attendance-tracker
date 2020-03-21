@@ -43,3 +43,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #Log in and logout
 gem 'devise'
+# token based authentication
+gem 'devise_token_auth'
