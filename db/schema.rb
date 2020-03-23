@@ -10,96 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_14_142219) do
+ActiveRecord::Schema.define(version: 2020_03_23_131510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admins", force: :cascade do |t|
-    t.string "Password"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "attendances", force: :cascade do |t|
-    t.string "Course_Id"
-    t.string "Course_GroupId"
-    t.string "Type"
-    t.string "Student_Id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "automated_attendances", force: :cascade do |t|
-    t.string "Id"
-    t.string "Course_Id"
-    t.string "Course_GroupId"
-    t.string "Type"
-    t.string "LectureId"
+    t.string "course_id"
+    t.string "course_group_id"
+    t.string "type"
+    t.string "student_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "course_groups", force: :cascade do |t|
-    t.string "Course_Id"
-    t.string "Group_Id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "course_students", force: :cascade do |t|
-    t.string "Student_Id"
-    t.string "Course_Id"
+    t.string "course_id"
+    t.string "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string "Id"
-    t.string "Name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "instructor_course_groups", force: :cascade do |t|
-    t.string "Ins_Id"
-    t.string "Group_Id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "instructor_courses", force: :cascade do |t|
-    t.string "Ins_Id"
-    t.string "Course_Id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "instructors", force: :cascade do |t|
-    t.string "Name"
-    t.string "Password"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "student_course_groups", force: :cascade do |t|
-    t.string "Student_Id"
-    t.string "Course_Id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "students", force: :cascade do |t|
-    t.string "Name"
-    t.string "Password"
-    t.string "Image"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "Id"
-    t.string "Type"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
