@@ -45,3 +45,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 # token based authentication
 gem 'devise_token_auth'
+# to add roles on Actors
+gem "rolify"
