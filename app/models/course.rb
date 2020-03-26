@@ -1,3 +1,3 @@
 class Course < ApplicationRecord
-belongs_to :CourseGroup	
+belongs_to :course_group
 end

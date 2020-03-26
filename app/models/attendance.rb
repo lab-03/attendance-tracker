@@ -1,3 +1,3 @@
 class Attendance < ApplicationRecord
-has_one :Course
+has_one :course
 end
