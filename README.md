@@ -5,15 +5,22 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Requirements
 
-* System dependencies
-
-* Configuration
+Rails >= 6.0
+Ruby>=2.6.5
 
 * Database creation
 
+rails g model User Course name:string
+
+rails g model User Course_Group course_id:string group_id:string
+
+rails g model User Course Attendance course_id:string course_group_id:string type:string student_id:string
+
 * Database initialization
+
+rake db:migrate
 
 * How to run the test suite
 
