@@ -49,3 +49,5 @@ gem 'devise'
 gem 'devise_token_auth'
 # to add roles on Actors
 gem "rolify"
+
+gem 'rack-cors'
