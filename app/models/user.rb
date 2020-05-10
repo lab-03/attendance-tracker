@@ -43,6 +43,8 @@
 class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::ActiveRecordSupport
   include DeviseTokenAuth::Concerns::User
+
+
   rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
