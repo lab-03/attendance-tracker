@@ -1,0 +1,5 @@
+<%= form_for @user do |f| %>
+  <%= f.hidden_field :image, value: @user.cached_image_data %>
+  <%= f.file_field :image %>
+  <%= f.submit %>
+<% end %>

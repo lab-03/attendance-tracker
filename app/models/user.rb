@@ -43,8 +43,8 @@
 class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::ActiveRecordSupport
   include DeviseTokenAuth::Concerns::User
-
-
+  include ImageUploader::Attachment(:image)
+  
   rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
