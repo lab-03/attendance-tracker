@@ -14,6 +14,7 @@
 #  failed_attempts        :integer          default(0), not null
 #  first_name             :string
 #  image                  :string
+#  image_data             :text
 #  last_name              :string
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :inet
