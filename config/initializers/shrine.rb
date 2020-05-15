@@ -3,9 +3,9 @@ require "shrine/storage/s3"
 
 
 s3_options = { 
-  bucket:            "", 
-  access_key_id:     "",
-  secret_access_key: "",
+  bucket:            ENV.fetch("BUCKET_NAME"), 
+  access_key_id:     ENV.fetch("ACCESS_KEY_ID"),
+  secret_access_key: ENV.fetch("SECRET_ACCESS_KEY"),
   region:            "eu-west-2",
 }
  
