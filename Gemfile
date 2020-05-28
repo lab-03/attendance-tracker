@@ -29,6 +29,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry', '~> 0.12.2'
+
 end
 
 group :development do
@@ -37,7 +39,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -51,3 +52,8 @@ gem 'devise_token_auth'
 gem "rolify"
 
 gem 'rack-cors'
+# auto builds associations
+gem "auto_build"
+
+#strong migrations
+gem 'strong_migrations'

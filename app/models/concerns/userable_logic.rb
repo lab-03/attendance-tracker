@@ -1,12 +1,11 @@
 module UserableLogic
   extend ActiveSupport::Concern
-  included do
-    before_create :create_userable
+
+  def self.included(base)
+    base.has_one :user, as: :userable, :dependent => :destroy, autosave: true, validate: true
+    base.extend ClassMethods
+    base.define_user_accessors
+    auto_build :user
   end
 
-  def create_userable
-    Transcation::Base do
-
-    end
-  end
 end

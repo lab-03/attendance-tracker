@@ -46,6 +46,7 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::ActiveRecordSupport
   include DeviseTokenAuth::Concerns::User
 
+  belongs_to :userable, polymorphic: true, inverse_of: :user
 
   rolify
   devise :database_authenticatable, :registerable,
