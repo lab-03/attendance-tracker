@@ -9,4 +9,5 @@
 #
 class Student < ApplicationRecord
   include UserableLogic
+  has_many :attendances
 end

@@ -8,4 +8,5 @@
 #  user_id    :bigint
 #
 class Lecturer < ApplicationRecord
+ has_many :course_groups	
 end
