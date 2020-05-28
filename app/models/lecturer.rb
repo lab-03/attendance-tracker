@@ -7,4 +7,5 @@
 #  updated_at :datetime         not null
 #
 class Lecturer < ApplicationRecord
+ has_many :course_groups	
 end
