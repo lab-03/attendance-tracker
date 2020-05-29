@@ -29,6 +29,16 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry', '~> 0.12.2'
+  gem 'rspec-rails', '~> 4.0.0'
+  #faking data
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  #factory for creating class instances
+  gem 'factory_bot_rails'
+  # extension for rspec
+  gem 'shoulda', '~> 3.6'
+  gem 'shoulda-matchers'
+
 end
 
 group :development do
@@ -37,7 +47,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -51,3 +60,11 @@ gem 'devise_token_auth'
 gem "rolify"
 
 gem 'rack-cors'
+# auto builds associations
+gem "auto_build"
+
+#strong migrations
+gem 'strong_migrations'
+
+#CI and CD
+gem 'travis'
