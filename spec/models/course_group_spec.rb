@@ -12,19 +12,19 @@ require 'rails_helper'
 
 RSpec.describe CourseGroup, type: :model do
   subject(:course_group) { build(:course_group) }
-  before { course_group.save }
+  before { coursegroup.save }
   
   it { should have_many(:students) }
   
   it 'course_id should be present' do
-   course_group.course_id = nil
-   expect(course_group).to_not be_valid
+   coursegroup.course_id = nil
+   expect(coursegroup).to_not be_valid
    
   end
   
   it 'group_id should be present' do
-   course_group.group_id = nil
-   expect(course_group).to_not be_valid
+   coursegroup.group_id = nil
+   expect(coursegroup).to_not be_valid
    
   end
     
