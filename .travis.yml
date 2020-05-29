@@ -3,8 +3,6 @@ rvm: 2.6.5
 cache: bundler
 services:
   - postgresql
-addons:
-  postgresql: "12.3"
 before_script:
   - bundle exec rake db:create
   - bundle exec rake db:migrate
