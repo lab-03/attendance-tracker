@@ -14,7 +14,6 @@
 #  failed_attempts        :integer          default(0), not null
 #  first_name             :string
 #  image                  :string
-#  image_data             :text
 #  last_name              :string
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :inet
@@ -24,7 +23,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  sign_in_count          :integer          default(0), not null
+#  sign_in_count          :integer
 #  tokens                 :json
 #  uid                    :string           default(""), not null
 #  unconfirmed_email      :string
@@ -46,7 +45,7 @@
 class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::ActiveRecordSupport
   include DeviseTokenAuth::Concerns::User
-  include ImageUploader::Attachment(:image)
+  # include ImageUploader::Attachment(:image)
   belongs_to :userable, polymorphic: true, inverse_of: :user
   rolify
   devise :database_authenticatable, :registerable,

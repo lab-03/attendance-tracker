@@ -5,7 +5,7 @@ module UserableLogic
     base.has_one :user, as: :userable, :dependent => :destroy, autosave: true, validate: true
     base.extend ClassMethods
     base.define_user_accessors
-    auto_build :user
+    base.auto_build :user
   end
 
 end
