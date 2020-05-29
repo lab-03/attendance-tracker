@@ -11,6 +11,6 @@
 #  updated_at      :datetime         not null
 #
 class Attendance < ApplicationRecord
- belong_to :course_group
- belong_to :student
+ belongs_to :course_group
+ belongs_to :student
 end
