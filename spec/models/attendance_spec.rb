@@ -17,8 +17,8 @@ RSpec.describe Attendance, type: :model do
   subject(:attendance) { build(:attendance) }
   before { attendance.save }
 
-  it { should belongs_to(:course_group) }
-  it { should belongs_to(:student) }
+  it { should belong_to(:course_group) }
+  it { should belong_to(:student) }
   
   it 'course_id should be present' do
    attendance.course_id=nil

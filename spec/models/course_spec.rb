@@ -13,7 +13,7 @@ RSpec.describe Course, type: :model do
   subject(:course) { build(:course) }
   before { course.save }
 
-  it { should has_many(:course_groups) }
+  it { should have_many(:course_groups) }
 
   it 'name should be present' do
    course.name=nil

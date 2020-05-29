@@ -14,7 +14,7 @@ RSpec.describe CourseGroup, type: :model do
   subject(:course_group) { build(:course_group) }
   before { course_group.save }
   
-  it { should has_many(:students) }
+  it { should have_many(:students) }
   
   it 'course_id should be present' do
    course_group.course_id=nil
