@@ -14,7 +14,6 @@
 #  failed_attempts        :integer          default(0), not null
 #  first_name             :string
 #  image                  :string
-#  image_data             :text
 #  last_name              :string
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :inet
@@ -29,11 +28,9 @@
 #  uid                    :string           default(""), not null
 #  unconfirmed_email      :string
 #  unlock_token           :string
-#  userable_type          :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  student_id             :integer
-#  userable_id            :bigint
 #
 # Indexes
 #

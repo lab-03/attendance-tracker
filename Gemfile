@@ -64,7 +64,7 @@ gem 'rack-cors'
 gem "auto_build"
 
 #strong migrations
-gem 'strong_migrations'
+# gem 'strong_migrations'
 
 #CI and CD
 gem 'travis'
