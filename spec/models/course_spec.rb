@@ -16,7 +16,7 @@ RSpec.describe Course, type: :model do
   it { should have_many(:course_groups) }
 
   it 'name should be present' do
-   course.name=nil
+   course.name = nil
    expect(course).to_not be_valid
    end
 

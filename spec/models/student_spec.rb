@@ -14,9 +14,9 @@ RSpec.describe Student, type: :model do
   before { student.save }
 
   it { should has_many(:attendances) }
-  
+
   it 'user_id should be present' do
-   student.user_id=nil
+   student.user_id = nil
    expect(student).to_not be_valid
   end
 
