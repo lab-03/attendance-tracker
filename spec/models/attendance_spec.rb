@@ -16,29 +16,12 @@ require 'rails_helper'
 RSpec.describe Attendance, type: :model do
   subject(:attendance) { build(:attendance) }
   before { attendance.save }
-
+ 
+ describe 'associations' do
   it { should belong_to(:course_group) }
   it { should belong_to(:student) }
+ end
   
-  it 'course_id should be present' do
-   attendance.course_id = nil
-   expect(attendance).to_not be_valid
-  end
-  
-  it 'course_group_id should be present' do
-   attendance.course_group_id = nil
-   expect(attendance).to_not be_valid
-  end
-  
-  it 'type should be present' do
-   attendance.type = nil
-   expect(attendance).to_not be_valid
-  end
-
-  it 'student_id should be present' do
-   attendance.student_id = nil
-   expect(attendance).to_not be_valid
-  end
 
 
 end

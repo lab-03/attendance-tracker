@@ -2,11 +2,12 @@
 #
 # Table name: course_groups
 #
-#  id         :bigint           not null, primary key
-#  course_id  :string
-#  group_id   :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :bigint           not null, primary key
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  course_id   :string
+#  group_id    :string
+#  lecturer_id :string
 #
 
 one:

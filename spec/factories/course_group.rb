@@ -1,14 +1,16 @@
 # == Schema Information
 #
-# Table name: courses
+# Table name: course_groups
 #
 #  id         :bigint           not null, primary key
-#  name       :string
+#  course_id  :string
+#  group_id   :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 FactoryBot.define do
-  factory :course do
-    name {  "CS"  }
+  factory :course_group do
+    course_id{'1'}
+    group_id{'1'}
     end
 end

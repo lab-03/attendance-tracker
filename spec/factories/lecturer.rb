@@ -8,7 +8,7 @@
 #  user_id    :bigint
 #
 FactoryBot.define do
-  factory :course_group do
-    id {1}
+  factory :lecturer do
+    user_id {1}
     end
 end

@@ -11,13 +11,11 @@
 RSpec.describe Lecturer, type: :model do
   subject(:lecturer) { build(:lecturer) }
   before { lecturer.save }
- 
-  it { should has_many(:course_groups) }
-
-  it 'user_id should be present' do
-   lecturer.user_id = nil
-   expect(lecturer).to_not be_valid
+  
+  describe 'associations' do
+   it { should have_many(:course_groups) }
   end
+  
 
 
 
