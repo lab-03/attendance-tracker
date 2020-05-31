@@ -22,7 +22,11 @@ RSpec.describe Lecturer, type: :model do
     expect(lecturer).to_not be_valid 
     
   end  
-
+  it 'course_id should be present' do
+    lecturer.course_id = nil 
+    expect(lecturer).to_not be_valid 
+    
+  end
 
 
 end
