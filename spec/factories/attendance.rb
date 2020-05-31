@@ -12,9 +12,9 @@
 #
 FactoryBot.define do
   factory :attendance do
-    course_id{'1'}
-    course_group_id{'1'}
-    type {'1'}
-    student_id{'1'}
+    course_id{'315'}
+    course_group_id{'513'}
+    type {'ay 7aga'}
+    student_id{'20160139'}
     end
 end

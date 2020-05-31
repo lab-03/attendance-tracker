@@ -15,8 +15,15 @@ RSpec.describe Course, type: :model do
   
   describe 'associations' do
     it { should have_many(:course_groups) }
+    it { should have_many(:lecturers) }
   end
   
+  it 'name should be present' do
+    course.name = nil 
+    expect(course).to_not be_valid 
+    
+  
+  end  
 
 
  end

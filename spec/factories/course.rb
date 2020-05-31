@@ -8,7 +8,7 @@
 #  updated_at :datetime         not null
 #
 FactoryBot.define do
-  factory :course do
-    name {  "CS"  }
+   factory :course do
+     name{'course_name'}
     end
 end

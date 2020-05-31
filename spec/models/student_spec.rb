@@ -17,8 +17,17 @@ RSpec.describe Student, type: :model do
  describe 'associations' do
   it { should have_many(:attendances) }
  end
-  
+ 
+ it 'user_id should be present' do
+   student.user_id = nil 
+   expect(student).to_not be_valid
 
+ end  
 
+ it 'course_group_id should be present' do
+   student.course_group_id = nil 
+   expect(student).to_not be_valid
+
+ end 
 
 end

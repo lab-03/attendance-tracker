@@ -19,6 +19,18 @@ RSpec.describe CourseGroup, type: :model do
    it { should have_many(:students) }
   end
   
+  it 'course_id should be present' do
+    course_group.course_id = nil 
+    expect(course_group).to_not be_valid 
+    
+  end  
+
+  it 'group_id should be present' do
+    course_group.group_id = nil 
+    expect(course_group).to_not be_valid 
+    
+  end  
+
     
 
  end

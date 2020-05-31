@@ -11,4 +11,9 @@
 #
 class CourseGroup < ApplicationRecord
  has_many :students
+
+
+ validates :course_id ,presence: true
+ validates :group_id ,presence: true
+
 end

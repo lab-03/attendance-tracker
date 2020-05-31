@@ -9,4 +9,9 @@
 #
 class Lecturer < ApplicationRecord
  has_many :course_groups	
+
+
+
+ validates :user_id ,presence: true
+
 end

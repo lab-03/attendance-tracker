@@ -9,4 +9,9 @@
 #
 class Course < ApplicationRecord
  has_many :course_groups
+ has_many :lecturers
+
+
+
+ validates :name ,presence: true
 end

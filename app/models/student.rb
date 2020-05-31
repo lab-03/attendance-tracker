@@ -11,4 +11,10 @@
 class Student < ApplicationRecord
   include UserableLogic
   has_many :attendances
+  has_many :course_groups
+
+
+ validates :user_id ,presence: true
+
 end
+
