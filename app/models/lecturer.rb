@@ -1,12 +1,12 @@
 # == Schema Information
 #
-# Table name: courses
+# Table name: lecturers
 #
 #  id         :bigint           not null, primary key
-#  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :bigint
 #
-class Course < ApplicationRecord
- has_many :course_groups
+class Lecturer < ApplicationRecord
+ has_many :course_groups	
 end

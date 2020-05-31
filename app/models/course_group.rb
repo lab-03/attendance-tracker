@@ -9,5 +9,5 @@
 #  updated_at :datetime         not null
 #
 class CourseGroup < ApplicationRecord
-has_many :courses
+ has_many :students
 end
