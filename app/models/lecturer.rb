@@ -5,10 +5,11 @@
 #  id         :bigint           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  course_id  :string
 #  user_id    :bigint
 #
 class Lecturer < ApplicationRecord
- has_many :course_groups	
+ has_many :course_groups
 
 
 
