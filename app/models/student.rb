@@ -10,7 +10,6 @@
 #
 class Student < ApplicationRecord
   include UserableLogic
-  include ImageUploader.attachment(:image)
-
+  include ImageUploader::Attachment(:image)
   has_many :attendances
 end
