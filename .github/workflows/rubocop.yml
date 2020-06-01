@@ -1,4 +1,9 @@
  name: Rubocop Linter Action
-  uses: andrewmcodes/rubocop-linter-action@v3.0.0
-  env:
+ uses: andrewmcodes/rubocop-linter-action@v3.0.0
+ on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+ env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
