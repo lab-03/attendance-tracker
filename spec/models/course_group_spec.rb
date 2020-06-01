@@ -17,19 +17,18 @@ RSpec.describe CourseGroup, type: :model do
   
   describe 'associations' do
    it { should have_many(:students) }
+   it { should have_many(:lecturers) }
   end
   
   it 'course_id should be present' do
     course_group.course_id = nil 
-    expect(course_group).to_not be_valid 
-    
-  end  
+    expect(course_group).to_not be_valid
+  end
 
-  it 'group_id should be present' do
-    course_group.group_id = nil 
-    expect(course_group).to_not be_valid 
-    
-  end  
+  it 'should save when valid' do
+    expect(course_group).to be_valid
+  end
+
 
     
 

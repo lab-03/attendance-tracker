@@ -15,10 +15,10 @@ class Attendance < ApplicationRecord
  belongs_to :student
 
 
- validates :course_id ,presence: true
- validates :course_group_id ,presence: true
+ # validates :course ,presence: true
+ validates :course_group ,presence: true
  validates :type ,presence: true
- validates :student_id ,presence: true
+ validates :student ,presence: true
 
 
 end

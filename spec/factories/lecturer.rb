@@ -9,7 +9,6 @@
 #
 FactoryBot.define do
   factory :lecturer do
-    user_id {20160100}
-    course_id{'CS!50'}
-    end
+    user
+  end
 end

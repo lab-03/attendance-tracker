@@ -10,7 +10,6 @@
 #
 FactoryBot.define do
   factory :course_group do
-    course_id{'CS!50'}
-    group_id{'G5'}
+    course
     end
 end
