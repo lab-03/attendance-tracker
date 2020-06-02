@@ -14,7 +14,7 @@ class Student < ApplicationRecord
   has_many :course_groups
 
 
- validates :user_id ,presence: true
+ #validates :user_id ,presence: false
 
 end
 
