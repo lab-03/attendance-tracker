@@ -2,19 +2,23 @@
 #
 # Table name: students
 #
-#  id              :bigint           not null, primary key
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  course_group_id :string
-#  user_id         :bigint
+#  id         :bigint           not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :bigint
 #
 class Student < ApplicationRecord
   include UserableLogic
   has_many :attendances
-  has_many :course_groups
+  
+  has_many :course_group_students
+  has_many :course_groups , through:  :course_group_students
 
+  has_many :course_students
+  has_many :courses , through: :course_students
+  
 
- #validates :user_id ,presence: false
+ validates :user ,presence: true
 
 end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_31_224745) do
+ActiveRecord::Schema.define(version: 2020_06_03_193759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,25 @@ ActiveRecord::Schema.define(version: 2020_05_31_224745) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "course_group_students", force: :cascade do |t|
+    t.string "student_id"
+    t.string "course_group_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "course_groups", force: :cascade do |t|
     t.string "course_id"
     t.string "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "lecturer_id"
+  end
+
+  create_table "course_students", force: :cascade do |t|
+    t.string "student_id"
+    t.string "course_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "courses", force: :cascade do |t|
@@ -38,11 +51,24 @@ ActiveRecord::Schema.define(version: 2020_05_31_224745) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "lecturer_course_groups", force: :cascade do |t|
+    t.string "lecturer_id"
+    t.string "course_group_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lecturer_courses", force: :cascade do |t|
+    t.string "lecturer_id"
+    t.string "course_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "lecturers", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.string "course_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -59,7 +85,6 @@ ActiveRecord::Schema.define(version: 2020_05_31_224745) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.string "course_group_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,7 +111,7 @@ ActiveRecord::Schema.define(version: 2020_05_31_224745) do
     t.json "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "sign_in_count", default: 0, null: false
+    t.integer "sign_in_count"
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"

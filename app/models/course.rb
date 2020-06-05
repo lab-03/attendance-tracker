@@ -9,7 +9,13 @@
 #
 class Course < ApplicationRecord
  has_many :course_groups
- has_many :lecturers
+
+ has_many :course_students
+ has_many :students , through: :course_students
+
+ has_many :lecturer_courses
+ has_many :lecturers , through:  :lecturer_courses
+
 
 
 

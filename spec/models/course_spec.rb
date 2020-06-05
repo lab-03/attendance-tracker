@@ -16,6 +16,7 @@ RSpec.describe Course, type: :model do
   describe 'associations' do
     it { should have_many(:course_groups) }
     it { should have_many(:lecturers) }
+    it { should have_many(:students) }
   end
   
   it 'name should be present' do
@@ -24,6 +25,9 @@ RSpec.describe Course, type: :model do
     
   
   end  
-
+  
+  it 'should save when valid' do
+    expect(course).to be_valid
+  end
 
  end

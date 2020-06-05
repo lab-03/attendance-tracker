@@ -1,18 +1,15 @@
 # == Schema Information
 #
-# Table name: course_groups
+# Table name: course_students
 #
 #  id         :bigint           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  course_id  :string
-#  group_id   :string
+#  student_id :string
 #
+require 'rails_helper'
 
-one:
-  course_id: MyString
-  group_id: MyString
-
-two:
-  course_id: MyString
-  group_id: MyString
+RSpec.describe CourseStudent, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
+end

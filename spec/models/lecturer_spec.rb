@@ -5,7 +5,6 @@
 #  id         :bigint           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  course_id  :string
 #  user_id    :bigint
 #
 
@@ -15,6 +14,8 @@ RSpec.describe Lecturer, type: :model do
   
   describe 'associations' do
    it { should have_many(:course_groups) }
+   it { should have_many(:courses) }
+
   end
   
   it 'user_id should be present' do
@@ -27,6 +28,12 @@ RSpec.describe Lecturer, type: :model do
     expect(lecturer).to_not be_valid 
     
   end
+  
+  it 'should save when valid' do
+    expect(lecturer).to be_valid
+  end
+
+
 
 
 end
