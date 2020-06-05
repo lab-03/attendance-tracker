@@ -47,10 +47,4 @@ RSpec.describe Attendance, type: :model do
 
 
 
-
-
-
-
-
-
 end

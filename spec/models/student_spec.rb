@@ -22,12 +22,11 @@ RSpec.describe Student, type: :model do
  it 'user_id should be present' do
    student.user_id = nil 
    expect(student).to_not be_valid
-
  end
+
 
  it 'should save when valid' do
     expect(student).to be_valid
   end
- 
 
 end

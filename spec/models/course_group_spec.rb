@@ -28,6 +28,7 @@ RSpec.describe CourseGroup, type: :model do
  it 'should save when valid' do
     expect(course_group).to be_valid
   end
+
     
 
  end

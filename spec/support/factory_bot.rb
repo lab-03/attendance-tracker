@@ -3,3 +3,4 @@ RSpec.configure do |config|
 end
 
 FactoryBot.use_parent_strategy = false
+

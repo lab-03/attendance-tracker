@@ -9,6 +9,7 @@
 #  group_id   :string
 #
 class CourseGroup < ApplicationRecord
+
  
  has_many :course_group_students	
  has_many :students , through: :course_group_students

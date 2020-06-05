@@ -30,4 +30,5 @@ RSpec.describe Course, type: :model do
     expect(course).to be_valid
   end
 
+
  end
