@@ -16,10 +16,9 @@ RSpec.describe Lecturer, type: :model do
    it { should have_many(:course_groups) }
    it { should have_many(:courses) }
   end
-  
-  it 'user_id should be present' do
-    lecturer.user_id = nil 
-    expect(lecturer).to_not be_valid
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:user) }
   end
 
   it 'should save when valid' do
