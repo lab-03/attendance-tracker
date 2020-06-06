@@ -77,10 +77,7 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:email) }
   end
 
-  it 'user should be saved when valid' do
-    user.userable = build(:student)
-    expect(user).to be_valid
-  end
+
 
 
 end
