@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2020_06_03_193759) do
   end
 
   create_table "course_group_students", force: :cascade do |t|
-    t.string "student_id"
-    t.string "course_group_id"
+    t.bigint "student_id"
+    t.bigint "course_group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2020_06_03_193759) do
   end
 
   create_table "course_students", force: :cascade do |t|
-    t.string "student_id"
-    t.string "course_id"
+    t.bigint "student_id"
+    t.bigint "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -52,15 +52,15 @@ ActiveRecord::Schema.define(version: 2020_06_03_193759) do
   end
 
   create_table "lecturer_course_groups", force: :cascade do |t|
-    t.string "lecturer_id"
-    t.string "course_group_id"
+    t.bigint "lecturer_id"
+    t.bigint "course_group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "lecturer_courses", force: :cascade do |t|
-    t.string "lecturer_id"
-    t.string "course_id"
+    t.bigint "lecturer_id"
+    t.bigint "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
