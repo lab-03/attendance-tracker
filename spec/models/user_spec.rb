@@ -59,7 +59,6 @@ RSpec.describe User, type: :model do
   end
 
   it 'password should be present' do
-    binding.pry
     user.password = nil
     expect(user).to_not be_valid
   end
