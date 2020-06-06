@@ -9,6 +9,7 @@
 #
 class Student < ApplicationRecord
   include UserableLogic
+
   has_many :attendances
   
   has_many :course_group_students
@@ -17,9 +18,6 @@ class Student < ApplicationRecord
   has_many :course_students
   has_many :courses , through: :course_students
   
-
- validates :user ,presence: true
- validates :user_id ,presence: true
 
 end
 

@@ -46,7 +46,9 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::ActiveRecordSupport
   include DeviseTokenAuth::Concerns::User
   # include ImageUploader::Attachment(:image)
-  belongs_to :userable, polymorphic: true, inverse_of: :user
+  belongs_to :userable, polymorphic: true, inverse_of: :user, optional: true
+
+
   rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,

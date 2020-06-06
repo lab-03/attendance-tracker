@@ -12,12 +12,8 @@
 #
 FactoryBot.define do
   factory :attendance do
-  course_group
-  student
-  type{'any thing'}
-
-
-
-
-    end
+    course_group
+    student
+    type { 'any thing' }
+  end
 end
