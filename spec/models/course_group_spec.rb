@@ -18,6 +18,10 @@ RSpec.describe CourseGroup, type: :model do
    it { should have_many(:students) }
    it { should have_many(:lecturers) }
   end
+
+  describe "validations" do
+    it { is_expected.to validate_presence_of(:course) }
+  end
   
   it 'course_id should be present' do
     course_group.course_id = nil 

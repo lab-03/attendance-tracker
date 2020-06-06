@@ -18,12 +18,14 @@ RSpec.describe Course, type: :model do
     it { should have_many(:lecturers) }
     it { should have_many(:students) }
   end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:name) }
+  end
   
   it 'name should be present' do
     course.name = nil 
-    expect(course).to_not be_valid 
-    
-  
+    expect(course).to_not be_valid
   end  
   
   it 'should save when valid' do

@@ -22,6 +22,11 @@ RSpec.describe Attendance, type: :model do
     it { should belong_to(:student) }
   end
 
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:student) }
+    it { is_expected.to validate_presence_of(:course_group) }
+  end
+
 
   it 'course_id should be present' do
     expect(attendance.course_group.course_id).to be_present

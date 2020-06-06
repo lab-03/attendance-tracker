@@ -17,7 +17,6 @@ class Attendance < ApplicationRecord
 
  # validates :course ,presence: true
  validates :course_group ,presence: true
- validates :type ,presence: true
  validates :student ,presence: true
 
 
