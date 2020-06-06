@@ -9,5 +9,15 @@
 #
 class Student < ApplicationRecord
   include UserableLogic
+
   has_many :attendances
+  
+  has_many :course_group_students
+  has_many :course_groups , through:  :course_group_students
+
+  has_many :course_students
+  has_many :courses , through: :course_students
+  
+
 end
+

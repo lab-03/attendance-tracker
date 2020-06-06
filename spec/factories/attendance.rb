@@ -10,14 +10,10 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
-class Attendance < ApplicationRecord
- belongs_to :course_group
- belongs_to :student
-
-
- # validates :course ,presence: true
- validates :course_group ,presence: true
- validates :student ,presence: true
-
-
+FactoryBot.define do
+  factory :attendance do
+    course_group
+    student
+    type { 'any thing' }
+  end
 end
