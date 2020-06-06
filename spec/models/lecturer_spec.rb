@@ -25,11 +25,6 @@ RSpec.describe Lecturer, type: :model do
   it 'should save when valid' do
     expect(lecturer).to be_valid
   end
-  
-  it 'should save when valid' do
-    expect(lecturer).to be_valid
-  end
-
 
 
 

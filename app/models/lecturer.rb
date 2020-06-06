@@ -8,6 +8,7 @@
 #  user_id    :bigint
 #
 class Lecturer < ApplicationRecord
+ include UserableLogic
  has_many :lecturer_courses	
  has_many :courses , through:  :lecturer_courses
 
@@ -16,7 +17,7 @@ class Lecturer < ApplicationRecord
 
 
 
+ validates :user ,presence: true
  validates :user_id ,presence: true
- validates :course_id ,presence: true
 
 end

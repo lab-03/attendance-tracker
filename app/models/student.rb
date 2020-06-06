@@ -19,6 +19,7 @@ class Student < ApplicationRecord
   
 
  validates :user ,presence: true
+ validates :user_id ,presence: true
 
 end
 
