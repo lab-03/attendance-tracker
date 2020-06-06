@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/lab-03/attendance-tracker.svg?branch=master)](https://travis-ci.com/lab-03/attendance-tracker)
+
+
 # README
 
 This README would normally document whatever steps are necessary to get the
