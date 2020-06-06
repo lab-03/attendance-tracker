@@ -49,6 +49,7 @@ class User < ApplicationRecord
   belongs_to :userable, polymorphic: true, inverse_of: :user, optional: true
 
 
+  validates :email, :password, presence: true
   rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
