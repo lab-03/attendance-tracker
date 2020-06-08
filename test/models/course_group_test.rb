@@ -5,8 +5,8 @@
 #  id         :bigint           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  course_id  :string
-#  group_id   :string
+#  course_id  :bigint
+#  group_id   :bigint
 #
 require 'test_helper'
 
