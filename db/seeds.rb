@@ -6,24 +6,80 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
-for i in 1..5 do
-	
-stud_name=Faker::Name.name+(i).to_s+"@gmail.com"
-stud_pass=Faker::Number.number(digits: 8)
-lec_name=Faker::Name.name+(i).to_s+"@gmail.com"
-lec_pass=Faker::Number.number(digits: 8)
-s=Student.new
-l=Lecturer.new
-s=s.user
-l=l.user
-s.email=stud_name
-s.password=stud_pass
-l.email=lec_name
-l.password=lec_pass
-s.save
-l.save
 
+def create_user(type)#1 for Lecturer else for Student
+	first_name=Faker::Name.first_name
+    last_name=Faker::Name.last_name
+    phone=Faker::PhoneNumber.phone_number
+    email=first_name+last_name+"@gmail.com"
+    pass=(Faker::Number.number(digits: 9)).to_s
+    userable_id=Faker::Number.number(digits: 6)
+    s = nil
+    if(type==1)
+    	s = Lecturer.new.user
+    else 
+        s = Student.new.user	
+    end
+	s.first_name=first_name
+	s.last_name=last_name
+	s.email=email
+    s.password=pass
+    s.phone=phone
+    s.userable_id=userable_id
+    s.save
+    if(type==1)
+    	s=Lecturer.create(id: userable_id, user_id: userable_id)
+    else 
+    	s=Student.create(id: userable_id, user_id: userable_id)
+    end
+
+    return s
+end
+
+def create_course()
+	name=Faker::ProgrammingLanguage.name
+	c=Course.create(name: name)
+	return c
+end
+def create_coursegroup(course_id)
+	group_id=Faker::Number.number(digits: 2)
+	cg=CourseGroup.create(course_id: course_id, group_id: group_id)
+	return cg
+end
+
+def create_attendance(course_id,course_group_id,type,student_id)
+	a=Attendance.create(course_id: course_id, course_group_id: course_group_id, type: type ,student_id: student_id)
+	return a
 end
 
 
+stud_arr=Array.new
+6.times do
+l1=create_user(1)
+l2=create_user(1)
+c=create_course()
+cg=create_coursegroup(c.id)
+
+
+c.lecturers << l1
+c.lecturers << l2
+end
+
+20.times do
+s=create_user(2)
+stud_arr.push(s)
+end
+6.times do
+courses=Course.all
+courses.each{|c|
+stud_arr.each{ |stud|
+c.students << stud
+}
+
+
+
+}
+
+
+end
 

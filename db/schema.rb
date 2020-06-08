@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 2020_06_03_193759) do
   enable_extension "plpgsql"
 
   create_table "attendances", force: :cascade do |t|
-    t.string "course_id"
-    t.string "course_group_id"
+    t.bigint "course_id"
+    t.bigint "course_group_id"
     t.string "type"
-    t.string "student_id"
+    t.bigint "student_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 2020_06_03_193759) do
   end
 
   create_table "course_groups", force: :cascade do |t|
-    t.string "course_id"
-    t.string "group_id"
+    t.bigint "course_id"
+    t.bigint "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
