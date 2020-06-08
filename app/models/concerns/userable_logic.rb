@@ -6,6 +6,7 @@ module UserableLogic
     base.extend ClassMethods
     base.define_user_accessors
     base.auto_build :user
+    base.validates :user, presence: true
   end
 
 end

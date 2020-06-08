@@ -10,29 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_31_003116) do
+ActiveRecord::Schema.define(version: 2020_06_03_193759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "attendances", force: :cascade do |t|
-    t.string "course_id"
-    t.string "course_group_id"
+    t.bigint "course_id"
+    t.bigint "course_group_id"
     t.string "type"
-    t.string "student_id"
+    t.bigint "student_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "course_group_students", force: :cascade do |t|
+    t.bigint "student_id"
+    t.bigint "course_group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "course_groups", force: :cascade do |t|
-    t.string "course_id"
-    t.string "group_id"
+    t.bigint "course_id"
+    t.bigint "group_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "course_students", force: :cascade do |t|
+    t.bigint "student_id"
+    t.bigint "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lecturer_course_groups", force: :cascade do |t|
+    t.bigint "lecturer_id"
+    t.bigint "course_group_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lecturer_courses", force: :cascade do |t|
+    t.bigint "lecturer_id"
+    t.bigint "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -57,7 +85,6 @@ ActiveRecord::Schema.define(version: 2020_05_31_003116) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.text "image_data"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,6 +105,7 @@ ActiveRecord::Schema.define(version: 2020_05_31_003116) do
     t.string "first_name"
     t.string "last_name"
     t.integer "student_id"
+    t.string "image"
     t.string "email"
     t.string "phone"
     t.json "tokens"
