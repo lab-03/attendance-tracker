@@ -8,5 +8,13 @@
 #  user_id    :bigint
 #
 class Lecturer < ApplicationRecord
- has_many :course_groups	
+ include UserableLogic
+
+ has_many :lecturer_courses
+ has_many :courses , through:  :lecturer_courses
+
+ has_many :lecturer_course_groups
+ has_many :course_groups , through:  :lecturer_course_groups
+
+
 end

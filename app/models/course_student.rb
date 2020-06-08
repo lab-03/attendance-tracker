@@ -1,18 +1,16 @@
 # == Schema Information
 #
-# Table name: course_groups
+# Table name: course_students
 #
 #  id         :bigint           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  course_id  :bigint
-#  group_id   :bigint
+#  student_id :bigint
 #
+class CourseStudent < ApplicationRecord
+belongs_to :course
+belongs_to :student
 
-one:
-  course_id: MyString
-  group_id: MyString
 
-two:
-  course_id: MyString
-  group_id: MyString
+end
