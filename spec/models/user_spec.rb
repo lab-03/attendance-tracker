@@ -13,7 +13,6 @@
 #  encrypted_password     :string           default(""), not null
 #  failed_attempts        :integer          default(0), not null
 #  first_name             :string
-#  image                  :string
 #  last_name              :string
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :inet
@@ -58,10 +57,7 @@ RSpec.describe User, type: :model do
     expect(user).to_not be_valid
   end
 
-  it 'password should be present' do
-    user.password = nil
-    expect(user).to_not be_valid
-  end
+
 
   it 'password should be 6 characters' do
     user.password = '12345'

@@ -13,7 +13,6 @@
 #  encrypted_password     :string           default(""), not null
 #  failed_attempts        :integer          default(0), not null
 #  first_name             :string
-#  image                  :string
 #  last_name              :string
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :inet
@@ -43,13 +42,14 @@
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
 class User < ApplicationRecord
+  include Devise::Models
   include DeviseTokenAuth::Concerns::ActiveRecordSupport
   include DeviseTokenAuth::Concerns::User
   # include ImageUploader::Attachment(:image)
   belongs_to :userable, polymorphic: true, inverse_of: :user, optional: true
 
 
-  validates :email, :password, presence: true
+  validates :email, :password, presence: true, on: :create
   rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
