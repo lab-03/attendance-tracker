@@ -57,10 +57,7 @@ RSpec.describe User, type: :model do
     expect(user).to_not be_valid
   end
 
-  it 'password should be present' do
-    user.password = nil
-    expect(user).to_not be_valid
-  end
+
 
   it 'password should be 6 characters' do
     user.password = '12345'
