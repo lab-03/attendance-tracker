@@ -12,6 +12,8 @@ ActionMailer::Base.smtp_settings = {
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  routes.default_url_options[:host] = 'https://a-tracker.herokuapp.com/'
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
