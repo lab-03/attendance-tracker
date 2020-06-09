@@ -47,10 +47,21 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
   belongs_to :userable, polymorphic: true, inverse_of: :user, optional: true
 
+  before_create :skip_notification
+
 
   validates :email, :password, presence: true, on: :create
   rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :lockable, :trackable
+
+  def send_confirmation_notification?
+    false
+  end
+
+  private
+  def skip_notification
+    skip_confirmation_notification!
+  end
 end
