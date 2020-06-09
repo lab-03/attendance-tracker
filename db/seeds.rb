@@ -8,32 +8,21 @@
 require 'faker'
 
 def create_user(type) #1 for Lecturer else for Student
+
+  s = (type == 1 ? Lecturer : Student).new
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
-  phone = Faker::PhoneNumber.phone_number
   email = first_name + last_name + "@gmail.com"
   pass = (Faker::Number.number(digits: 9)).to_s
-  userable_id = Faker::Number.number(digits: 6)
-  s = nil
-  if type == 1
-    s = Lecturer.new.user
-  else
-    s = Student.new.user
-  end
+
   s.first_name = first_name
   s.last_name = last_name
   s.email = email
   s.password = pass
-  s.phone = phone
-  s.userable_id = userable_id
+  # s.phone = phone
   s.save
-  if type == 1
-    s = Lecturer.create(id: userable_id, user_id: userable_id)
-  else
-    s = Student.create(id: userable_id, user_id: userable_id)
-  end
-
   s
+
 end
 
 def create_course
