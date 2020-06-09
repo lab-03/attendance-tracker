@@ -48,6 +48,7 @@ class User < ApplicationRecord
   belongs_to :userable, polymorphic: true, inverse_of: :user, optional: true
 
   before_create :skip_notification
+  after_create :confirm_user
 
 
   validates :email, :password, presence: true, on: :create
@@ -61,7 +62,12 @@ class User < ApplicationRecord
   end
 
   private
+
   def skip_notification
     skip_confirmation_notification!
+  end
+
+  def confirm_user
+    confirm
   end
 end
