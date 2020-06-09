@@ -2,7 +2,7 @@ module ClassMethods
   def define_user_accessors
     #We check the user columns to declare them as attributes to delegate
 
-    attributes_to_delegate = %w[email password]
+    attributes_to_delegate = %w[email password first_name last_name]
     #User method delegation
     attributes_to_delegate.each do |attrib|
       class_eval <<-RUBY
