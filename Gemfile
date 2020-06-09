@@ -23,6 +23,10 @@ gem 'puma', '~> 4.3'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem "shrine", "~> 3.0"
+gem "aws-sdk-s3", "~> 1.14"
+
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
@@ -47,6 +51,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
+end
+
+group :test do
+  gem 'shrine-memory'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

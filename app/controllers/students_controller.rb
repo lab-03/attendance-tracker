@@ -14,9 +14,11 @@ class StudentsController < ApplicationController
   end
 
   # POST /students
+
+
   def create
     @student = Student.new(student_params)
-
+    assign_user_params
     if @student.save
       render json: @student, status: :created, location: @student
     else
@@ -46,6 +48,15 @@ class StudentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def student_params
-      params.fetch(:student, {})
+      params.require(:student).permit( :image)
     end
+
+  def user_params
+    params.require(:student).permit(:first_name, :last_name, :email, :password)
+  end
+
+  def assign_user_params
+    @student.user.update(user_params)
+    @student.user.save!
+  end
 end
