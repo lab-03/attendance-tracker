@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_193759) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.text "image_data"
   end
 
   create_table "users", force: :cascade do |t|
@@ -105,7 +106,6 @@ ActiveRecord::Schema.define(version: 2020_06_03_193759) do
     t.string "first_name"
     t.string "last_name"
     t.integer "student_id"
-    t.string "image"
     t.string "email"
     t.string "phone"
     t.json "tokens"

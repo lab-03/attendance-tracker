@@ -76,3 +76,6 @@ gem 'strong_migrations'
 
 #CI and CD
 gem 'travis'
+
+#cleaning the database
+gem 'database_cleaner-active_record'
