@@ -35,8 +35,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry', '~> 0.12.2'
   gem 'rspec-rails', '~> 4.0.0'
-  #faking data
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   #factory for creating class instances
   gem 'factory_bot_rails'
   # extension for rspec
@@ -79,3 +77,6 @@ gem 'travis'
 
 #cleaning the database
 gem 'database_cleaner-active_record'
+
+#faking data for the seed
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
