@@ -79,3 +79,7 @@ gem 'travis'
 
 #cleaning the database
 gem 'database_cleaner-active_record'
+
+
+#for http calls
+gem 'httparty'
