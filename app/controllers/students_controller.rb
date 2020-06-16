@@ -5,12 +5,12 @@ class StudentsController < ApplicationController
   def index
     @students = Student.all
 
-    render json: @students
+    render json: StudentSerializer.new(@students).serializable_hash
   end
 
   # GET /students/1
   def show
-    render json: @student
+    render json: StudentSerializer.new(@student).serializable_hash
   end
 
   # POST /students

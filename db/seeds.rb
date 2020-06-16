@@ -69,9 +69,8 @@ end
 s=create_user(2)
 stud_arr.push(s)
 end
-6.times do
-courses=Course.all
-courses.each{|c|
+
+Course.all.each{|c|
 stud_arr.each{ |stud|
 c.students << stud
 }
@@ -81,5 +80,5 @@ c.students << stud
 }
 
 
-end
+
 
