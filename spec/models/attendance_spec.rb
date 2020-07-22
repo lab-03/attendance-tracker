@@ -16,10 +16,15 @@ require 'rails_helper'
 RSpec.describe Attendance, type: :model do
   subject(:attendance) { build(:attendance) }
   before { attendance.save }
- 
+
   describe 'associations' do
     it { should belong_to(:course_group) }
     it { should belong_to(:student) }
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:student) }
+    it { is_expected.to validate_presence_of(:course_group) }
   end
 
 
@@ -34,7 +39,6 @@ RSpec.describe Attendance, type: :model do
   end
 
 
-
   it 'student_id should be present' do
     attendance.student_id = nil
     expect(attendance).to_not be_valid
@@ -44,7 +48,6 @@ RSpec.describe Attendance, type: :model do
   it 'should save when valid' do
     expect(attendance).to be_valid
   end
-
 
 
 end

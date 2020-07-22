@@ -11,6 +11,5 @@ FactoryBot.define do
   factory :lecturer do
     id {1}
     user {FactoryBot.build(:user)}
-    user_id{"20200321"}
     end
 end

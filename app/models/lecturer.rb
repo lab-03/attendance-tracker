@@ -9,15 +9,12 @@
 #
 class Lecturer < ApplicationRecord
  include UserableLogic
- has_many :lecturer_courses	
+
+ has_many :lecturer_courses
  has_many :courses , through:  :lecturer_courses
 
  has_many :lecturer_course_groups
  has_many :course_groups , through:  :lecturer_course_groups
 
-
-
- validates :user ,presence: true
- validates :user_id ,presence: true
 
 end
