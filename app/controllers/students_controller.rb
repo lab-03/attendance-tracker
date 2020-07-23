@@ -5,12 +5,12 @@ class StudentsController < ApplicationController
   def index
     @students = Student.all
 
-    render json: @students
+    render json: StudentSerializer.new(@students).serializable_hash
   end
 
   # GET /students/1
   def show
-    render json: @student
+    render json: StudentSerializer.new(@student).serializable_hash
   end
 
   # POST /students
@@ -41,15 +41,16 @@ class StudentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_student
-      @student = Student.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def student_params
-      params.require(:student).permit( :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_student
+    @student = Student.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def student_params
+    params.require(:student).permit(:image)
+  end
 
   def user_params
     params.require(:student).permit(:first_name, :last_name, :email, :password)
