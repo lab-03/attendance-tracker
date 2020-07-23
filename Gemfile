@@ -22,7 +22,6 @@ gem 'puma', '~> 4.3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'fast_jsonapi'
 
 gem "shrine", "~> 3.0"
 gem "aws-sdk-s3", "~> 1.14"
@@ -79,3 +78,6 @@ gem 'travis'
 
 #cleaning the database
 gem 'database_cleaner-active_record'
+
+#Serializing
+gem 'active_model_serializers', '~> 0.10.0'

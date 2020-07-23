@@ -1,6 +1,5 @@
-class CourseGroupSerializer
-  include FastJsonapi::ObjectSerializer
-  
+class CourseGroupSerializer < ActiveModel::Serializer
+
   attributes :course_id, :group_id
   has_many :students
 
