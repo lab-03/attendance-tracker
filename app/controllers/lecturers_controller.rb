@@ -4,7 +4,6 @@ class LecturersController < ApplicationController
   # GET /lecturers
   def index
     @lecturers = Lecturer.all
-
     render json: @lecturers
   end
 
@@ -39,13 +38,14 @@ class LecturersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_lecturer
-      @lecturer = Lecturer.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def lecturer_params
-      params.fetch(:lecturer, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_lecturer
+    @lecturer = Lecturer.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def lecturer_params
+    params.fetch(:lecturer, {})
+  end
 end

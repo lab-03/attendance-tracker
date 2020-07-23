@@ -42,7 +42,6 @@ group :development, :test do
   # extension for rspec
   gem 'shoulda', '~> 3.6'
   gem 'shoulda-matchers'
-
 end
 
 group :development do
@@ -80,6 +79,8 @@ gem 'travis'
 #cleaning the database
 gem 'database_cleaner-active_record'
 
+#Serializing
+gem 'active_model_serializers', '~> 0.10.0'
 
 #for http calls
 gem 'httparty'
