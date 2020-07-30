@@ -19,14 +19,14 @@ class Student < ApplicationRecord
   has_many :course_students
   has_many :courses, through: :course_students
 
-  validates :image, presence: true, on: :create
+  validates :user, :image, :email, presence: true, on: :create
   validate :fci_mail
   validate :image_has_one_face, on: :create
 
   private
 
   def fci_mail
-    if (email =~ FCI_MAIL_REGEX).nil?
+    if user&.email.nil? || (email =~ FCI_MAIL_REGEX).nil?
       errors.add(:email, "please enter a valid FCI-CU email")
       false
     else
