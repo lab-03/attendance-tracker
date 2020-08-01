@@ -81,3 +81,6 @@ gem 'database_cleaner-active_record'
 
 #Serializing
 gem 'active_model_serializers', '~> 0.10.0'
+
+#for http calls
+gem 'httparty'
