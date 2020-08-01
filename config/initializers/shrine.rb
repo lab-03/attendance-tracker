@@ -6,12 +6,16 @@ if Rails.env.development?
       cache: Shrine::Storage::FileSystem.new("public", prefix: "uploads/cache"),
       store: Shrine::Storage::FileSystem.new("public", prefix: "uploads/store")
   }
-elsif Rails.env.test?
-  require 'shrine/storage/memory'
-  Shrine.storages = {
-      cache: Shrine::Storage::Memory.new,
-      store: Shrine::Storage::Memory.new
-  }
+# elsif Rails.env.test?
+#   require 'shrine/storage/memory'
+#   Shrine::Storage::S3.new(
+#       access_key_id:     "minioadmin", # "AccessKey" value
+#       secret_access_key: "minioadmin", # "SecretKey" value
+#       endpoint:          "<MINIO_ENDPOINT>",   # "Endpoint"  value
+#       bucket:            "<MINIO_BUCKET>",     # name of the bucket you created
+#       region:            "us-east-1",
+#       force_path_style:  true,
+#       )
 else
   require "shrine/storage/s3"
   s3_options = {
