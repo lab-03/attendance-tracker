@@ -9,7 +9,7 @@
 #
 class LecturerSerializer < ActiveModel::Serializer
   
-  attributes :first_name, :last_name, :user_id, :email
+  attributes :id, :first_name, :last_name, :user_id, :email
   has_many :courses
   has_many :course_groups
 end

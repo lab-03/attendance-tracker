@@ -4,6 +4,7 @@ class ApplicationController < ActionController::API
   before_action :authenticate_user!
   before_action :set_userable
 
+  before_action :authenticate_user!
   protected
 
   def configure_permitted_parameters

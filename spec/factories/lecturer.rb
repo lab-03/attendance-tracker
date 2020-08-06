@@ -10,5 +10,6 @@
 FactoryBot.define do
   factory :lecturer do
     user
+    email { "#{Faker::Name.first_name}@fci-cu.edu.eg" }
   end
 end
