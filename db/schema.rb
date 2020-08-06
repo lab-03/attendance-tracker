@@ -10,18 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_193759) do
+ActiveRecord::Schema.define(version: 2020_08_01_144215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "attachments", force: :cascade do |t|
+    t.integer "ownerable_id"
+    t.string "ownerable_type"
+    t.text "attachment_data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "attendances", force: :cascade do |t|
-    t.bigint "course_id"
-    t.bigint "course_group_id"
-    t.string "type"
     t.bigint "student_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "session_id"
+    t.boolean "verified", null: false
+    t.index ["session_id"], name: "index_attendances_on_session_id"
   end
 
   create_table "course_group_students", force: :cascade do |t|
@@ -81,6 +89,18 @@ ActiveRecord::Schema.define(version: 2020_06_03_193759) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.string "token"
+    t.bigint "lecturer_id", null: false
+    t.integer "classable_id"
+    t.string "classable_type"
+    t.time "duration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lecturer_id"], name: "index_sessions_on_lecturer_id"
+    t.index ["token"], name: "index_sessions_on_token", unique: true
+  end
+
   create_table "students", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -133,4 +153,5 @@ ActiveRecord::Schema.define(version: 2020_06_03_193759) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "sessions", "lecturers"
 end

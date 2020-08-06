@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   resources :students
   resources :courses
   resources :course_groups
+  resources :sessions, param: :token, only: [:index, :show, :create] do
+    member do
+      post :attend
+    end
+  end
+  # post :create_session, to: "sessions#create"
   mount_devise_token_auth_for 'User', at: 'auth'
   # resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -19,7 +19,7 @@ class Student < ApplicationRecord
 
   validates :user, :image, :email, presence: true, on: :create
   validate :fci_mail
-  validate :image_has_one_face, on: :create
+  # validate :image_has_one_face, on: :create
 
   private
 

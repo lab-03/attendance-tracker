@@ -8,16 +8,15 @@
 #  updated_at :datetime         not null
 #
 class Course < ApplicationRecord
- has_many :course_groups
+  has_many :course_groups
 
- has_many :course_students
- has_many :students , through: :course_students
+  has_many :students, through: :course_groups
 
- has_many :lecturer_courses
- has_many :lecturers , through:  :lecturer_courses
+  has_many :lecturer_courses
+  has_many :lecturers, through: :lecturer_courses
+
+  has_many :sessions, as: :classable
 
 
-
-
- validates :name ,presence: true
+  validates :name, presence: true
 end

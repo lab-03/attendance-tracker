@@ -2,50 +2,38 @@
 #
 # Table name: attendances
 #
-#  id              :bigint           not null, primary key
-#  type            :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  course_group_id :bigint
-#  course_id       :bigint
-#  student_id      :bigint
+#  id         :bigint           not null, primary key
+#  verified   :boolean          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  session_id :bigint
+#  student_id :bigint
+#
+# Indexes
+#
+#  index_attendances_on_session_id  (session_id)
 #
 
 require 'rails_helper'
 
 RSpec.describe Attendance, type: :model do
-  subject(:attendance) { build(:attendance) }
-  before { attendance.save }
+  subject(:attendance) { create(:attendance) }
+  # before { attendance.save }
 
   describe 'associations' do
-    it { should belong_to(:course_group) }
+    # binding.pry
+    it { should belong_to(:session) }
     it { should belong_to(:student) }
   end
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:student) }
-    it { is_expected.to validate_presence_of(:course_group) }
-  end
-
-
-  it 'course_id should be present' do
-    expect(attendance.course_group.course_id).to be_present
-  end
-
-
-  it 'course_group_id should be present' do
-    attendance.course_group_id = nil
-    expect(attendance).to_not be_valid
-  end
-
-
-  it 'student_id should be present' do
-    attendance.student_id = nil
-    expect(attendance).to_not be_valid
+    it { is_expected.to validate_presence_of(:session) }
   end
 
 
   it 'should save when valid' do
+    # binding.pry
     expect(attendance).to be_valid
   end
 
