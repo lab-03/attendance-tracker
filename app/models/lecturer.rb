@@ -20,6 +20,8 @@ class Lecturer < ApplicationRecord
 
   validate :fci_mail
 
+  after_create :confirm_user
+
 
   private
 
@@ -30,5 +32,9 @@ class Lecturer < ApplicationRecord
     else
       true
     end
+  end
+
+  def confirm_user
+    user.confirm
   end
 end

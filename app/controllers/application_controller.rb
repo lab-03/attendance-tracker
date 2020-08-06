@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::API
   before_action :configure_permitted_parameters, if: :devise_controller?
   include DeviseTokenAuth::Concerns::SetUserByToken
-  before_action :authenticate_user!
+  before_action :authenticate_user!, unless: :not_sign_in
   before_action :set_userable
 
-  before_action :authenticate_user!
+
   protected
 
   def configure_permitted_parameters
@@ -12,6 +12,10 @@ class ApplicationController < ActionController::API
   end
 
   private
+
+  def not_sign_in
+    "/auth/sign_in".casecmp(request&.path).eql?(0)
+  end
 
   def set_userable
     @current_userable = @current_user.userable if @current_user
