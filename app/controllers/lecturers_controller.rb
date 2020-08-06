@@ -1,10 +1,11 @@
 class LecturersController < ApplicationController
+
+  skip_before_action :authenticate_user!, only: [:create]
   before_action :set_lecturer, only: [:show, :update, :destroy]
 
   # GET /lecturers
   def index
     @lecturers = Lecturer.all
-
     render json: @lecturers
   end
 
@@ -15,8 +16,8 @@ class LecturersController < ApplicationController
 
   # POST /lecturers
   def create
-    @lecturer = Lecturer.new(lecturer_params)
-
+    @lecturer = Lecturer.new
+    assign_user_params
     if @lecturer.save
       render json: @lecturer, status: :created, location: @lecturer
     else
@@ -39,13 +40,19 @@ class LecturersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_lecturer
-      @lecturer = Lecturer.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def lecturer_params
-      params.fetch(:lecturer, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_lecturer
+    @lecturer = Lecturer.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def lecturer_params
+    params.require(:lecturer).permit(:first_name, :last_name, :email, :password)
+  end
+
+  def assign_user_params
+    @lecturer.user.update(lecturer_params)
+    @lecturer.user.save!
+  end
 end

@@ -9,7 +9,7 @@
 #
 FactoryBot.define do
   factory :lecturer do
-    id {1}
-    user {FactoryBot.build(:user)}
-    end
+    user
+    email { "#{Faker::Name.first_name}@fci-cu.edu.eg" }
+  end
 end

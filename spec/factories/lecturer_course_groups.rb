@@ -10,7 +10,7 @@
 #
 FactoryBot.define do
   factory :lecturer_course_group do
-    lecturer_id { "MyString" }
-    course_group_id { "MyString" }
+    course_group
+    lecturer
   end
 end

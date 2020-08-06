@@ -2,22 +2,34 @@
 #
 # Table name: attendances
 #
-#  id              :bigint           not null, primary key
-#  type            :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  course_group_id :bigint
-#  course_id       :bigint
-#  student_id      :bigint
+#  id         :bigint           not null, primary key
+#  verified   :boolean          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  session_id :bigint
+#  student_id :bigint
+#
+# Indexes
+#
+#  index_attendances_on_session_id  (session_id)
 #
 class Attendance < ApplicationRecord
- belongs_to :course_group
+
+ self.ignored_columns = ["course_group_id"]
+
+ belongs_to :session
  belongs_to :student
 
-
+ has_one :attachment, as: :ownerable, dependent: :destroy
+ accepts_nested_attributes_for :attachment
  # validates :course ,presence: true
- validates :course_group ,presence: true
- validates :student ,presence: true
+ validates :student, :session ,presence: true
 
+ def classable
+  session&.classable
+ end
 
+ def attempted_face
+  attachment&.attachment
+ end
 end

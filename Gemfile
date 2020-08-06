@@ -35,6 +35,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry', '~> 0.12.2'
   gem 'rspec-rails', '~> 4.0.0'
+  #faking data
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   #factory for creating class instances
   gem 'factory_bot_rails'
   # extension for rspec
@@ -53,6 +55,8 @@ end
 
 group :test do
   gem 'shrine-memory'
+  #cleaning the database
+  gem 'database_cleaner-active_record'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -75,8 +79,8 @@ gem 'strong_migrations'
 #CI and CD
 gem 'travis'
 
-#cleaning the database
-gem 'database_cleaner-active_record'
+#Serializing
+gem 'active_model_serializers', '~> 0.10.0'
 
-#faking data for the seed
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+#for http calls
+gem 'httparty'

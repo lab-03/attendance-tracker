@@ -12,8 +12,10 @@
 #
 FactoryBot.define do
   factory :attendance do
-    course_group
     student
-    type { 'any thing' }
+    session
+    # association :student, factory: :student
+    # association :session, factory: :session
+    verified { false }
   end
 end
