@@ -2,13 +2,16 @@
 #
 # Table name: attendances
 #
-#  id              :bigint           not null, primary key
-#  type            :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  course_group_id :bigint
-#  course_id       :bigint
-#  student_id      :bigint
+#  id         :bigint           not null, primary key
+#  verified   :boolean          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  session_id :bigint
+#  student_id :bigint
+#
+# Indexes
+#
+#  index_attendances_on_session_id  (session_id)
 #
 
 one:

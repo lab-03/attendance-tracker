@@ -54,6 +54,8 @@ end
 
 group :test do
   gem 'shrine-memory'
+  #cleaning the database
+  gem 'database_cleaner-active_record'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -75,9 +77,6 @@ gem 'strong_migrations'
 
 #CI and CD
 gem 'travis'
-
-#cleaning the database
-gem 'database_cleaner-active_record'
 
 #Serializing
 gem 'active_model_serializers', '~> 0.10.0'

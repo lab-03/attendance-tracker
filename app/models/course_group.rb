@@ -17,6 +17,8 @@ class CourseGroup < ApplicationRecord
  has_many :lecturer_course_groups
  has_many :lecturers , through:  :lecturer_course_groups
 
+ has_many :sessions, as: :classable
+
  belongs_to :course
 
 

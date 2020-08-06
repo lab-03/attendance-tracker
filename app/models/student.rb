@@ -15,13 +15,11 @@ class Student < ApplicationRecord
 
   has_many :course_group_students
   has_many :course_groups, through: :course_group_students
-
-  has_many :course_students
-  has_many :courses, through: :course_students
+  has_many :courses, through: :course_groups
 
   validates :user, :image, :email, presence: true, on: :create
   validate :fci_mail
-  validate :image_has_one_face, on: :create
+  # validate :image_has_one_face, on: :create
 
   private
 

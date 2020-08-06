@@ -9,6 +9,6 @@
 #
 FactoryBot.define do
    factory :course do
-     name{'course_name'}
+     name{ Faker::Coffee.name}
     end
 end

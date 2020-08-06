@@ -18,7 +18,6 @@ class LecturersController < ApplicationController
   def create
     @lecturer = Lecturer.new
     assign_user_params
-
     if @lecturer.save
       render json: @lecturer, status: :created, location: @lecturer
     else

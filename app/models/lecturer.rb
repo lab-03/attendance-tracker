@@ -16,7 +16,10 @@ class Lecturer < ApplicationRecord
   has_many :lecturer_course_groups
   has_many :course_groups, through: :lecturer_course_groups
 
+  has_many :sessions
+
   validate :fci_mail
+
 
   private
 
