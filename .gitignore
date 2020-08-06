@@ -24,3 +24,5 @@
 .rakeTasks
 .idea
 .generators
+lib/monkey_patch/
+spec/fixtures/
