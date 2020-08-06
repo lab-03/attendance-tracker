@@ -30,7 +30,7 @@ class Session < ApplicationRecord
   has_one :attachment, as: :ownerable
   accepts_nested_attributes_for :attachment, allow_destroy: true
 
-  validates :lecturer, :classable, :attachment, presence: true
+  validates :lecturer, :classable, presence: true
 
   def qr_code
     attachment&.attachment
