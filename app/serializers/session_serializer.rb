@@ -5,6 +5,7 @@
 #  id             :bigint           not null, primary key
 #  classable_type :string
 #  duration       :time
+#  ended_at       :datetime
 #  token          :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null

@@ -22,6 +22,11 @@ class SessionsController < ApplicationController
     render json: attendance.data, code: attendance.code
   end
 
+
+  def feedback
+    render json: (@session.ended_at.present? ? @session.feedback : "Session has not finished yet!"), code: :ok
+  end
+
   private
 
   def set_session_by_token

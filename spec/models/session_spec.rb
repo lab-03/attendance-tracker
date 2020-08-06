@@ -5,6 +5,7 @@
 #  id             :bigint           not null, primary key
 #  classable_type :string
 #  duration       :time
+#  ended_at       :datetime
 #  token          :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
@@ -36,7 +37,7 @@ RSpec.describe Session, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:lecturer) }
     it { is_expected.to validate_presence_of(:classable) }
-    it { is_expected.to validate_presence_of(:attachment) }
+    # it { is_expected.to validate_presence_of(:attachment) }
   end
 
 

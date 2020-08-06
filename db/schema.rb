@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_01_144215) do
+ActiveRecord::Schema.define(version: 2020_08_06_180756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string "text"
+    t.integer "rating"
+    t.bigint "question_id", null: false
+    t.string "ownerable_type", null: false
+    t.bigint "ownerable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ownerable_type", "ownerable_id"], name: "index_answers_on_ownerable_type_and_ownerable_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
 
   create_table "attachments", force: :cascade do |t|
     t.integer "ownerable_id"
@@ -59,6 +71,13 @@ ActiveRecord::Schema.define(version: 2020_08_01_144215) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "feed_backs", force: :cascade do |t|
+    t.bigint "session_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["session_id"], name: "index_feed_backs_on_session_id"
+  end
+
   create_table "lecturer_course_groups", force: :cascade do |t|
     t.bigint "lecturer_id"
     t.bigint "course_group_id"
@@ -79,6 +98,18 @@ ActiveRecord::Schema.define(version: 2020_08_01_144215) do
     t.bigint "user_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string "text"
+    t.string "typeable_type"
+    t.integer "typeable_id"
+    t.string "ownerable_type"
+    t.integer "ownerable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "expires_at"
+    t.string "question_type"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -97,6 +128,7 @@ ActiveRecord::Schema.define(version: 2020_08_01_144215) do
     t.time "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "ended_at"
     t.index ["lecturer_id"], name: "index_sessions_on_lecturer_id"
     t.index ["token"], name: "index_sessions_on_token", unique: true
   end
@@ -153,5 +185,7 @@ ActiveRecord::Schema.define(version: 2020_08_01_144215) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "feed_backs", "sessions"
   add_foreign_key "sessions", "lecturers"
 end
