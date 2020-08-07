@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    session = Session.new session_params.merge(lecturer_id: @current_userable.id)
+    session = Session.new(session_params.merge(lecturer_id: @current_userable.id))
     resp = CreateSession.call(session)
     render json: resp.data, code: resp.code
   end
@@ -20,6 +20,11 @@ class SessionsController < ApplicationController
   def attend
     attendance = StudentVerify.call(@session, @current_userable, params[:captured_face])
     render json: attendance.data, code: attendance.code
+  end
+
+  def send_interactive_question
+    # send the notification to the students attended this session
+    render json: "Sending the Question/s to the attended students", code: :ok
   end
 
 
