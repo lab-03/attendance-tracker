@@ -4,6 +4,9 @@
 #
 #  id             :bigint           not null, primary key
 #  expires_at     :datetime
+#  is_boolean     :boolean          default(FALSE)
+#  is_rating      :boolean          default(FALSE)
+#  is_text        :boolean          default(FALSE)
 #  ownerable_type :string
 #  question_type  :string
 #  text           :string

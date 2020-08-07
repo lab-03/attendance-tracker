@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_06_180756) do
+ActiveRecord::Schema.define(version: 2020_08_07_105345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,9 @@ ActiveRecord::Schema.define(version: 2020_08_06_180756) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "expires_at"
     t.string "question_type"
+    t.boolean "is_rating", default: false
+    t.boolean "is_text", default: false
+    t.boolean "is_boolean", default: false
   end
 
   create_table "roles", force: :cascade do |t|
