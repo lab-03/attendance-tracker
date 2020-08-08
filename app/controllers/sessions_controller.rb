@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
   end
 
   def session_params
-    params.require(:session).permit(:classable_id, :classable_type)
+    params.require(:session).permit(:classable_id, :classable_type, :lat, :long, :apply_checks)
   end
 
 end

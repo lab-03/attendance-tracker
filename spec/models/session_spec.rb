@@ -3,9 +3,13 @@
 # Table name: sessions
 #
 #  id             :bigint           not null, primary key
+#  apply_checks   :boolean          default(TRUE)
 #  classable_type :string
 #  duration       :time
 #  ended_at       :datetime
+#  lat            :float
+#  long           :float
+#  qr_code_base64 :text
 #  token          :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
