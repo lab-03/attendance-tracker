@@ -8,6 +8,11 @@ Rails.application.routes.draw do
       post :attend
     end
   end
+  resources :users, only: [] do
+    collection do
+      post :add_device_token
+    end
+  end
   # post :create_session, to: "sessions#create"
   mount_devise_token_auth_for 'User', at: 'auth'
   # resources :users

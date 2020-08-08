@@ -38,6 +38,12 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
+
+  def add_device_token
+    @current_user.device_tokens.create!(device_token_params)
+    render json: "Ok", code: :ok
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -48,6 +54,10 @@ class UsersController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def user_params
     params.permit(:image, :email, :password)
-
   end
+
+  def device_token_params
+    params.require(:device_token).permit(:token, :device_type)
+  end
+
 end
