@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
     render json: attendance.data, code: attendance.code
   end
 
+
   private
 
   def set_session_by_token
