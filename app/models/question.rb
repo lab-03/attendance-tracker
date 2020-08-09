@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: questions
+#
+#  id             :bigint           not null, primary key
+#  expires_at     :datetime
+#  is_boolean     :boolean          default(FALSE)
+#  is_rating      :boolean          default(FALSE)
+#  is_text        :boolean          default(FALSE)
+#  ownerable_type :string
+#  question_type  :string
+#  text           :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  ownerable_id   :integer
+#
+class Question < ApplicationRecord
+  self.ignored_columns = %w[typeable_type typeable_id]
+
+  belongs_to :typeable, polymorphic: true, optional: true
+  belongs_to :ownerable, polymorphic: true, optional: true
+  has_many :answers
+
+  enum question_type: {feed_back: :feed_back, interactive: :interactive}
+
+  validates :text, presence: true
+
+  scope :by_type, ->(type) { where(question_type: type) }
+  scope :by_typeable, ->(typeable) { where(typeable: typeable) }
+end

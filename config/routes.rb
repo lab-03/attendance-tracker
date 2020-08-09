@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   resources :sessions, param: :token, only: [:index, :show, :create] do
     member do
       post :attend
+      post :end
+    end
+  end
+  resources :users, only: [] do
+    collection do
+      post :add_device_token
     end
   end
   # post :create_session, to: "sessions#create"

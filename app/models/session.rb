@@ -31,11 +31,20 @@ class Session < ApplicationRecord
   belongs_to :lecturer
   belongs_to :classable, polymorphic: true
   has_many :attendances
+  has_one :feed_back
+  accepts_nested_attributes_for :feed_back
 
   has_one :attachment, as: :ownerable
   accepts_nested_attributes_for :attachment, allow_destroy: true
 
   validates :lecturer, :classable, presence: true
+
+
+  def end_session
+    return true unless ended_at.nil?
+    update!(ended_at: DateTime.now)
+    send_feed_back_after_end
+  end
 
   def qr_code
     attachment&.attachment
@@ -44,4 +53,11 @@ class Session < ApplicationRecord
   def assigned_students
     classable.students
   end
+
+  private
+
+  def send_feed_back_after_end
+    SendFeedBackJob.perform_async(id)
+  end
+
 end

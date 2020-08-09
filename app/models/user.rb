@@ -47,18 +47,31 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
   belongs_to :userable, polymorphic: true, inverse_of: :user, optional: true
 
+  has_many :device_tokens, dependent: :destroy
+
   before_create :skip_notification
   after_create :confirm_user
 
 
   validates :email, :password, presence: true, on: :create
+
+
   rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :lockable, :trackable
 
+
   def send_confirmation_notification?
     false
+  end
+
+  def notification_tokens(device_type = nil)
+    (device_type.present? ? device_tokens.by_device_type(device_type) : device_tokens).pluck(:token)
+  end
+
+  def self.get_notification_tokens(ids)
+
   end
 
   private
@@ -70,4 +83,5 @@ class User < ApplicationRecord
   def confirm_user
     confirm
   end
+
 end

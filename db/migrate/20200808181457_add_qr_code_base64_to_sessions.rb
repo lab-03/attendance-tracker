@@ -3,6 +3,10 @@ class AddQrCodeBase64ToSessions < ActiveRecord::Migration[6.0]
 
   def change
     add_column :sessions, :qr_code_base64, :text
+    safety_assured do
+      remove_column :questions, :typeable_id
+      remove_column :questions, :typeable_type
+    end
   end
 
   def up
