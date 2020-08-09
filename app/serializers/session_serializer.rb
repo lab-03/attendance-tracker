@@ -26,7 +26,7 @@
 #  fk_rails_...  (lecturer_id => lecturers.id)
 #
 class SessionSerializer < ActiveModel::Serializer
-  attributes :id, :token, :qr_code_link
+  attributes :id, :token, :qr_code_link, :lat, :long, :apply_checks, :qr_code_base64
 
   belongs_to :lecturer
   belongs_to :classable, key: :class
