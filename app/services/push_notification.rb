@@ -7,14 +7,6 @@ module PushNotification
   end
 
   def self.options(data)
-    {
-        priority: 'high',
-        data: data,
-        notification: {
-            title: data[:title],
-            body: data[:message],
-            icon: data[:icon]
-        }
-    }
+    {priority: 'high'}.merge(data)
   end
 end

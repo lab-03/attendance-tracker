@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  before_action :set_session_by_token, only: [:attend, :show]
+  before_action :set_session_by_token, only: [:attend, :show, :end]
   # before_action :set_session_by_id, only: [:show]
 
   def index
@@ -25,6 +25,11 @@ class SessionsController < ApplicationController
   def send_interactive_question
     # send the notification to the students attended this session
     render json: "Sending the Question/s to the attended students", code: :ok
+  end
+
+  def end
+    @session.end_session
+    render json: @session, code: :ok
   end
 
 

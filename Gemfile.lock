@@ -238,6 +238,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.2.1)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -272,6 +273,10 @@ GEM
     shrine-memory (0.1.0)
       down
       shrine
+    sidekiq (6.1.1)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -341,6 +346,7 @@ DEPENDENCIES
   shoulda-matchers
   shrine (~> 3.0)
   shrine-memory
+  sidekiq (~> 6.1.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   strong_migrations

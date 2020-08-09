@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :sessions, param: :token, only: [:index, :show, :create] do
     member do
       post :attend
+      post :end
     end
   end
   resources :users, only: [] do

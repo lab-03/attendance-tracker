@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_123947) do
+ActiveRecord::Schema.define(version: 2020_08_08_181457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,8 +109,6 @@ ActiveRecord::Schema.define(version: 2020_08_08_123947) do
 
   create_table "questions", force: :cascade do |t|
     t.string "text"
-    t.string "typeable_type"
-    t.integer "typeable_id"
     t.string "ownerable_type"
     t.integer "ownerable_id"
     t.datetime "created_at", precision: 6, null: false
@@ -141,6 +139,10 @@ ActiveRecord::Schema.define(version: 2020_08_08_123947) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "ended_at"
+    t.boolean "apply_checks", default: true
+    t.float "lat"
+    t.float "long"
+    t.text "qr_code_base64"
     t.index ["lecturer_id"], name: "index_sessions_on_lecturer_id"
     t.index ["token"], name: "index_sessions_on_token", unique: true
   end

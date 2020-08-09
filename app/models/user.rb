@@ -61,12 +61,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :lockable, :trackable
 
+
   def send_confirmation_notification?
     false
   end
 
   def notification_tokens(device_type = nil)
     (device_type.present? ? device_tokens.by_device_type(device_type) : device_tokens).pluck(:token)
+  end
+
+  def self.get_notification_tokens(ids)
+
   end
 
   private

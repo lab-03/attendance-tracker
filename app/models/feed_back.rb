@@ -18,4 +18,18 @@
 class FeedBack < ApplicationRecord
   belongs_to :session, optional: false
   has_many :questions, as: :ownerable
+  accepts_nested_attributes_for :questions, allow_destroy: true
+
+  def notification_json
+    {
+        notification: {
+            title: "You have got some feed back questions to answer",
+            body: "Open this notification to answer some quick questions"
+        },
+        data: {
+            type: "feed_back",
+            id: self.id
+        }
+    }
+  end
 end

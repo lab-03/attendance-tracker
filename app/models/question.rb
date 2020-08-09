@@ -10,15 +10,15 @@
 #  ownerable_type :string
 #  question_type  :string
 #  text           :string
-#  typeable_type  :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  ownerable_id   :integer
-#  typeable_id    :integer
 #
 class Question < ApplicationRecord
-  belongs_to :typeable, polymorphic: true
-  belongs_to :ownerable, polymorphic: true
+  self.ignored_columns = %w[typeable_type typeable_id]
+
+  belongs_to :typeable, polymorphic: true, optional: true
+  belongs_to :ownerable, polymorphic: true, optional: true
   has_many :answers
 
   enum question_type: {feed_back: :feed_back, interactive: :interactive}

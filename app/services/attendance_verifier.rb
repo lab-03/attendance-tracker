@@ -10,7 +10,7 @@ module AttendanceVerifier
   end
 
   def self.qr_code_params(params)
-    {hash: params[:hash], longitude: params[:long], latitude: params[:lat]}.to_json
+    {hash: params[:hash], longitude: params[:long], latitude: params[:lat], applyChecks: params[:applyChecks]}.to_json
   end
 
 end
