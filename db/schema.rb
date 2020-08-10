@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_181457) do
+ActiveRecord::Schema.define(version: 2020_08_10_141244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2020_08_08_181457) do
     t.bigint "ownerable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "choice_id"
+    t.index ["choice_id"], name: "index_answers_on_choice_id"
     t.index ["ownerable_type", "ownerable_id"], name: "index_answers_on_ownerable_type_and_ownerable_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
@@ -41,7 +43,19 @@ ActiveRecord::Schema.define(version: 2020_08_08_181457) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "session_id"
     t.boolean "verified", null: false
+    t.float "lat"
+    t.float "long"
+    t.float "fr_score"
     t.index ["session_id"], name: "index_attendances_on_session_id"
+  end
+
+  create_table "choices", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.boolean "correct", default: false
+    t.string "text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_choices_on_question_id"
   end
 
   create_table "course_group_students", force: :cascade do |t|
@@ -85,6 +99,15 @@ ActiveRecord::Schema.define(version: 2020_08_08_181457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["session_id"], name: "index_feed_backs_on_session_id"
+  end
+
+  create_table "interactive_quizzes", force: :cascade do |t|
+    t.string "name"
+    t.bigint "session_id", null: false
+    t.datetime "ended_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["session_id"], name: "index_interactive_quizzes_on_session_id"
   end
 
   create_table "lecturer_course_groups", force: :cascade do |t|
@@ -200,7 +223,9 @@ ActiveRecord::Schema.define(version: 2020_08_08_181457) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "choices", "questions"
   add_foreign_key "device_tokens", "users"
   add_foreign_key "feed_backs", "sessions"
+  add_foreign_key "interactive_quizzes", "sessions"
   add_foreign_key "sessions", "lecturers"
 end
