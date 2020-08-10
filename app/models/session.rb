@@ -37,6 +37,10 @@ class Session < ApplicationRecord
   has_one :attachment, as: :ownerable
   accepts_nested_attributes_for :attachment, allow_destroy: true
 
+  has_many :interactive_quizzes, class_name: "InteractiveQuiz"
+  accepts_nested_attributes_for :interactive_quizzes
+
+
   validates :lecturer, :classable, presence: true
 
 
@@ -54,7 +58,15 @@ class Session < ApplicationRecord
     classable.students
   end
 
+  def assigned_students_user_ids
+    assigned_students.map(&method(:student_user_id))
+  end
+
   private
+
+  def student_user_id(student)
+    student.user.id
+  end
 
   def send_feed_back_after_end
     SendFeedBackJob.perform_async(id)

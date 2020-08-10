@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  before_action :set_session_by_token, only: [:attend, :show, :end]
+  before_action :set_session_by_token, only: [:attend, :show, :end, :interactive_quiz]
   # before_action :set_session_by_id, only: [:show]
 
   def index
@@ -22,8 +22,13 @@ class SessionsController < ApplicationController
     render json: attendance.data, code: attendance.code
   end
 
-  def send_interactive_question
-    # send the notification to the students attended this session
+  def interactive_quiz
+    quiz = InteractiveQuiz.new(quiz_params)
+    unless quiz.valid?
+      render json: quiz.errors.full_messages.join(", "), code: 422
+      return
+    end
+    SendInteractiveQuizJob.perform_async(@session.id, quiz_params)
     render json: "Sending the Question/s to the attended students", code: :ok
   end
 
@@ -49,6 +54,13 @@ class SessionsController < ApplicationController
 
   def session_params
     params.require(:session).permit(:classable_id, :classable_type, :lat, :long, :apply_checks)
+  end
+
+  def quiz_params
+    params.require(:interactive_quiz).permit(
+        :name, :ended_at,
+        questions_attributes: [:text, :is_rating, :is_text, choices_attributes: [:text, :correct]]
+    )
   end
 
 end

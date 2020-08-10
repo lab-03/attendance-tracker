@@ -19,6 +19,8 @@ class Question < ApplicationRecord
 
   belongs_to :ownerable, polymorphic: true, optional: true
   has_many :answers
+  has_many :choices
+  accepts_nested_attributes_for :choices
 
   enum question_type: {feed_back: :feed_back, interactive: :interactive}
 

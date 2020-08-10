@@ -9,7 +9,7 @@ class SaveAnswersJob < ApplicationJob
     if answers_owner == "FeedBack"
       # bla bla bla
     elsif  answers_owner == "InteractiveQuiz"
-      # bla bla bla 
+      # bla bla bla
     end
   end
 
