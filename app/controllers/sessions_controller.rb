@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
-  before_action :set_session_by_token, only: [:attend, :show, :end, :interactive_quiz]
+  before_action :set_session_by_token, only: [:attend, :show, :end, :interactive_quiz, :get_quiz_result]
+  before_action :set_quiz, only: [:get_quiz_result]
   # before_action :set_session_by_id, only: [:show]
 
   def index
@@ -54,6 +55,10 @@ class SessionsController < ApplicationController
 
   def set_session_by_id
     @session = @current_userable.sessions.find(params[:id])
+  end
+
+  def set_quiz
+    @session.interactive_quizzes.find(params[:quiz_id])
   end
 
   def session_params
