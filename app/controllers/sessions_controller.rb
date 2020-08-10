@@ -32,6 +32,10 @@ class SessionsController < ApplicationController
     render json: "Sending the Question/s to the attended students", code: :ok
   end
 
+  def get_quiz_result
+    render json: @quiz, code: :ok
+  end
+
   def end
     @session.end_session
     render json: @session, code: :ok
