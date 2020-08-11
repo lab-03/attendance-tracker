@@ -3,6 +3,9 @@
 # Table name: attendances
 #
 #  id         :bigint           not null, primary key
+#  fr_score   :float
+#  lat        :float
+#  long       :float
 #  verified   :boolean          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -14,7 +17,9 @@
 #  index_attendances_on_session_id  (session_id)
 #
 class AttendanceSerializer < ActiveModel::Serializer
-  attributes :id, :verified, :created_at, :updated_at, :session_id
+  attributes :id, :verified, :created_at, :updated_at, :session_id, :captured_image, :fr_score
   belongs_to :student, serializer: StudentShortSerializer
-
+  def captured_image
+    object.attempted_face&.url
+  end
 end
