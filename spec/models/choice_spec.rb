@@ -3,6 +3,7 @@
 # Table name: choices
 #
 #  id          :bigint           not null, primary key
+#  choice_num  :integer
 #  correct     :boolean          default(FALSE)
 #  text        :string
 #  created_at  :datetime         not null

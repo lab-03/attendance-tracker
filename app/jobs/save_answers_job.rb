@@ -6,11 +6,17 @@ class SaveAnswersJob < ApplicationJob
       Answer.create(answer)
     end
     answers_owner = answers.map {|answer| answer.question.ownerable.class.to_s}&.uniq&.first
-    if answers_owner == "FeedBack"
-      # bla bla bla
-    elsif  answers_owner == "InteractiveQuiz"
-      # bla bla bla
+    lecturer_user_id = answers.first&.question&.ownerable&.session&.lecturer&.user&.id
+    return unless lecturer_user_id
+    if answers_owner == "InteractiveQuiz"
+      data = {
+          type: "InteractiveQuizAnswer",
+          answers: answers.map {|answer| answer.choice&.choice_num}
+      }
+      notification_params = {notification: {title: data[:answers].first, body: "new answer on the interactive quiz"}, data: data}
+      NotificationSenderJob.perform_async([lecturer_user_id], notification_params)
     end
+
   end
 
 end
