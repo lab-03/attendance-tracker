@@ -6,7 +6,7 @@ class StudentVerify < CommandBase
       attendance.save!
       # attendance.verified = FaceRecognition::same_person(student.image_url, attendance.attempted_face&.url)
       params[:captured_face] = attendance.attempted_face&.url
-      student_verification = StudentVerify::verify(verify_params(session, student, params))
+      student_verification = StudentVerifier::verify(verify_params(session, student, params))
       attendance.verified = student_verification["status"] == "success"
       attendance.fr_score = student_verification["data"]["FRScore"] if attendance.verified
       attendance.save!

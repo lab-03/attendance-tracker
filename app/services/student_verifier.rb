@@ -6,7 +6,7 @@ module StudentVerifier
 
 
   def self.verify(verification_params)
-    resp = post('qrcodes/verify', headers: DEFAULT_HEADERS, body: verification_params.to_json)
+    resp = post('/qrcodes/verify', headers: DEFAULT_HEADERS, body: verification_params.to_json)
     JSON.parse(resp.body)
   end
 end
