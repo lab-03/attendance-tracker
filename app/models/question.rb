@@ -40,4 +40,9 @@ class Question < ApplicationRecord
   def session
     ownerable&.session
   end
+
+  def rating_count
+    answers.pluck(:rating).each_with_object(Hash.new(0)) { |rating,counts| counts[rating] += 1 }
+  end
+
 end

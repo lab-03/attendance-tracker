@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :lecturers
   resources :students
-  resources :courses do
+  resources :courses, only: [:index, :show, :create] do
     member do
       get :report
     end

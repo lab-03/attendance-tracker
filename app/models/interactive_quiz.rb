@@ -19,8 +19,36 @@
 #
 class InteractiveQuiz < ApplicationRecord
   belongs_to :session
-  has_many :questions
+  has_many :questions, as: :ownerable
   accepts_nested_attributes_for :questions
+
+  def total_students_participated
+    questions.map do |question|
+      question.answers.map do |answer|
+        answer.ownerable.id
+      end.uniq
+    end.flatten.uniq.size
+  end
+
+  def total_right_answers
+    Answer.where(choice_id: Choice.where(question_id: question_ids, correct: true)).size
+  end
+
+  def questions_with_choices
+    questions.map do |question|
+      {
+          text: question.text,
+          choices: question.choices.map do |choice|
+            {
+                text: choice.text,
+                correct: choice.correct,
+                no_students_choosed: question.answers.where(choice_id: choice.id).size
+            }
+          end
+      }
+    end
+  end
+
 
 
   def notification_json
