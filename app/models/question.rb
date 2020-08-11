@@ -17,9 +17,10 @@
 class Question < ApplicationRecord
   self.ignored_columns = %w[typeable_type typeable_id]
 
-  belongs_to :typeable, polymorphic: true, optional: true
   belongs_to :ownerable, polymorphic: true, optional: true
   has_many :answers
+  has_many :choices
+  accepts_nested_attributes_for :choices
 
   enum question_type: {feed_back: :feed_back, interactive: :interactive}
 
@@ -34,5 +35,9 @@ class Question < ApplicationRecord
 
   def students_answered
     answers.map &:ownerable
+  end
+
+  def session
+    ownerable&.session
   end
 end

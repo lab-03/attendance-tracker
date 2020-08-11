@@ -5,7 +5,7 @@ class SendFeedBackJob < ApplicationJob
     feed_back = FeedBack.find_or_create_by(session: session)
     feed_back.questions_attributes = get_questions_attributes
     feed_back.save!
-    assigned_students_user_ids = session.assigned_students.map {|student| student.user.id}
+    assigned_students_user_ids = session.assigned_students_user_ids
     NotificationSenderJob.perform_async(assigned_students_user_ids, feed_back.notification_json)
   end
 
