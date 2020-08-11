@@ -22,6 +22,10 @@ class Lecturer < ApplicationRecord
 
   after_create :confirm_user
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
 
   private
 

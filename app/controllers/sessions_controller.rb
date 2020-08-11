@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  before_action :set_session_by_token, only: [:attend, :show, :end]
+  before_action :set_session_by_token, only: [:attend, :show, :end, :report]
   # before_action :set_session_by_id, only: [:show]
 
   def index
@@ -35,6 +35,10 @@ class SessionsController < ApplicationController
 
   def feedback
     render json: (@session.ended_at.present? ? @session.feedback : "Session has not finished yet!"), code: :ok
+  end
+
+  def report
+    render json: @session, serializer: SessionReportSerializer, code: :ok
   end
 
   private

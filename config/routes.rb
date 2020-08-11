@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
   resources :lecturers
   resources :students
-  resources :courses
+  resources :courses do
+    member do
+      get :report
+    end
+  end
   resources :course_groups
   resources :sessions, param: :token, only: [:index, :show, :create] do
     member do
       post :attend
       post :end
+      get :report
     end
   end
   resources :users, only: [] do

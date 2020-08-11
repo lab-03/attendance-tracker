@@ -54,6 +54,12 @@ class Session < ApplicationRecord
     classable.students
   end
 
+  def attended_students
+    attendances.where(verified: true).pluck(:student_id).uniq
+  end
+
+
+
   private
 
   def send_feed_back_after_end
