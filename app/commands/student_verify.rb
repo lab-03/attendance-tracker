@@ -8,7 +8,11 @@ class StudentVerify < CommandBase
       params[:captured_face] = attendance.attempted_face&.url
       student_verification = StudentVerifier::verify(verify_params(session, student, params))
       attendance.verified = student_verification["status"] == "success"
-      attendance.fr_score = student_verification["data"]["FRScore"] if attendance.verified
+      if attendance.verified
+        attendance.fr_score = student_verification["data"]["FRScore"]
+      else
+        attendance.failure_message = student_verification["message"]
+      end
       attendance.save!
     end
     success(attendance, 200)
