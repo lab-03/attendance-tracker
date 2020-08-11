@@ -1,6 +1,6 @@
 class SessionReportSerializer < ActiveModel::Serializer
   attributes :id, :duration, :ended_at, :created_at, :updated_at, :apply_checks, :lat, :long, :qr_code_base64,
-             :token, :by_teacher, :attendance, :participants, :feedback
+             :token, :by_teacher, :attendance, :interactive_quizzes, :feedback
 
   def by_teacher
     {

@@ -11,12 +11,12 @@ class SaveAnswersJob < ApplicationJob
     if answers_owner == "InteractiveQuiz"
       data = {
           type: "InteractiveQuizAnswer",
-          answers: answers.map {|answer| answer.choice&.choice_num}
+          answers: answers.map {|answer| answer.choice&.choice_num},
+          choice_num: answers.map {|answer| answer.choice&.choice_num}.first
       }
       notification_params = {notification: {title: data[:answers].first, body: "new answer on the interactive quiz"}, data: data}
       NotificationSenderJob.perform_async([lecturer_user_id], notification_params)
     end
-
   end
 
 end
