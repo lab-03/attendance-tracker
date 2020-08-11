@@ -20,6 +20,8 @@ class FeedBack < ApplicationRecord
   has_many :questions, as: :ownerable
   accepts_nested_attributes_for :questions, allow_destroy: true
 
+
+
   def notification_json
     {
         notification: {

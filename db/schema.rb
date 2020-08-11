@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_134613) do
+ActiveRecord::Schema.define(version: 2020_08_10_141244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,9 @@ ActiveRecord::Schema.define(version: 2020_08_10_134613) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "session_id"
     t.boolean "verified", null: false
+    t.float "lat"
+    t.float "long"
+    t.float "fr_score"
     t.index ["session_id"], name: "index_attendances_on_session_id"
   end
 

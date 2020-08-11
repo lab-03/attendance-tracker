@@ -62,6 +62,10 @@ class Session < ApplicationRecord
     assigned_students.map(&method(:student_user_id))
   end
 
+  def attended_students
+    attendances.where(verified: true).pluck(:student_id).uniq
+  end
+
   private
 
   def student_user_id(student)

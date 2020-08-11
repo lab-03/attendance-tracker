@@ -3,6 +3,9 @@
 # Table name: attendances
 #
 #  id         :bigint           not null, primary key
+#  fr_score   :float
+#  lat        :float
+#  long       :float
 #  verified   :boolean          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

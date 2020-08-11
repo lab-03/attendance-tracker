@@ -1,10 +1,14 @@
 class StudentVerify < CommandBase
-  def call(session, student, face_captured)
-    attendance = find_or_init_attendance(session, student, face_captured)
+  def call(session, student, params)
+    attendance = find_or_init_attendance(session, student, params[:captured_face])
     return success(attendance) if attendance.persisted?
     ActiveRecord::Base.transaction do
       attendance.save!
-      attendance.verified = FaceRecognition::same_person(student.image_url, attendance.attempted_face&.url)
+      # attendance.verified = FaceRecognition::same_person(student.image_url, attendance.attempted_face&.url)
+      params[:captured_face] = attendance.attempted_face&.url
+      student_verification = StudentVerifier::verify(verify_params(session, student, params))
+      attendance.verified = student_verification["status"] == "success"
+      attendance.fr_score = student_verification["data"]["FRScore"] if attendance.verified
       attendance.save!
     end
     success(attendance, 200)
@@ -21,5 +25,18 @@ class StudentVerify < CommandBase
      student: student,
      verified: false,
      attachment_attributes: {attachment: face_captured}}
+  end
+
+  def verify_params(session, student, params)
+    base_hash = {
+        hash: session.token,
+        latitude: params[:lat],
+        longitude: params[:long],
+    }
+    if params[:captured_face].present?
+      base_hash.merge!({captured_face: params[:captured_face], original_face: student.image_url})
+    else
+      base_hash
+    end
   end
 end

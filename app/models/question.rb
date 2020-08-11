@@ -29,6 +29,14 @@ class Question < ApplicationRecord
   scope :by_type, ->(type) { where(question_type: type) }
   scope :by_typeable, ->(typeable) { where(typeable: typeable) }
 
+  def average_rating
+    answers.average(:rating)
+  end
+
+  def students_answered
+    answers.map &:ownerable
+  end
+
   def session
     ownerable&.session
   end

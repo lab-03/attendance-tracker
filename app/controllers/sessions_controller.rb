@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  before_action :set_session_by_token, only: [:attend, :show, :end, :interactive_quiz, :get_quiz_result]
+  before_action :set_session_by_token, only: [:attend, :show, :end, :report, :get_quiz_result, :interactive_quiz]
   before_action :set_quiz, only: [:get_quiz_result]
   # before_action :set_session_by_id, only: [:show]
 
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def attend
-    attendance = StudentVerify.call(@session, @current_userable, params[:captured_face])
+    attendance = StudentVerify.call(@session, @current_userable, attend_params)
     render json: attendance.data, code: attendance.code
   end
 
@@ -47,6 +47,10 @@ class SessionsController < ApplicationController
     render json: (@session.ended_at.present? ? @session.feedback : "Session has not finished yet!"), code: :ok
   end
 
+  def report
+    render json: @session, serializer: SessionReportSerializer, code: :ok
+  end
+
   private
 
   def set_session_by_token
@@ -63,6 +67,10 @@ class SessionsController < ApplicationController
 
   def session_params
     params.require(:session).permit(:classable_id, :classable_type, :lat, :long, :apply_checks)
+  end
+
+  def attend_params
+    params.permit(:captured_face, :lat, :long)
   end
 
   def quiz_params
