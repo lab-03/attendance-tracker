@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       post :interactive_quiz
       post :end
       get :report
+      post :invalidate_attendance
     end
   end
   resources :users, only: [] do

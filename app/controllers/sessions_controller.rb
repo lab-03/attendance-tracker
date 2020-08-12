@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
 
-  before_action :set_session_by_token, only: [:attend, :show, :end, :report, :get_quiz_result, :interactive_quiz]
+  before_action :set_session_by_token, only: [:attend, :show, :end, :report, :get_quiz_result,
+                                              :interactive_quiz, :invalidate_attendance]
   before_action :set_quiz, only: [:get_quiz_result]
+  # before_action :set_attendance, only: [:invalidate_attendance]
   # before_action :set_session_by_id, only: [:show]
 
   def index
@@ -41,6 +43,17 @@ class SessionsController < ApplicationController
   def end
     @session.end_session
     render json: @session, code: :ok
+  end
+
+  def invalidate_attendance
+    student_id = params.require(:student_id)
+    attendance = @session.attendances.where(verified: true, student_id: student_id).first
+    if attendance.present?
+      attendance.update!(verified: false, failure_message: "invalidate by the lecturer #{@current_userable.name}")
+      render json: {status: "success", message: "attendance invalidated"}, status: :ok
+    else
+      render json: {status: "error", message: "the student is not verified"}, status: :unprocessable_entity
+    end
   end
 
 
