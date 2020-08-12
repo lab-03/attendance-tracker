@@ -34,10 +34,10 @@ class Session < ApplicationRecord
   has_one :feed_back
   accepts_nested_attributes_for :feed_back
 
-  has_one :attachment, as: :ownerable
+  has_one :attachment, as: :ownerable, dependent: :destroy
   accepts_nested_attributes_for :attachment, allow_destroy: true
 
-  has_many :interactive_quizzes, class_name: "InteractiveQuiz"
+  has_many :interactive_quizzes, class_name: "InteractiveQuiz", dependent: :destroy
   accepts_nested_attributes_for :interactive_quizzes
 
 
