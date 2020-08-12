@@ -41,6 +41,7 @@ class SessionsController < ApplicationController
   end
 
   def end
+    StudentVerifier.end_session(@session.token)
     @session.end_session
     render json: @session, code: :ok
   end

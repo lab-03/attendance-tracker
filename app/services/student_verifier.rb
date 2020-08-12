@@ -9,4 +9,8 @@ module StudentVerifier
     resp = post('/qrcodes/verify', headers: DEFAULT_HEADERS, body: verification_params.to_json)
     JSON.parse(resp.body)
   end
+
+  def self.end_session(session_token)
+    put('/qrcodes/end', headers:DEFAULT_HEADERS, body: {hash: session_token}.to_json)
+  end
 end
