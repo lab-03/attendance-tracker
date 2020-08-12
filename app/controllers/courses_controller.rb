@@ -7,7 +7,7 @@ class CoursesController < ApplicationController
   end
 
   def create
-    course = Course.create(course_params)
+    course = @current_userable.courses.create(course_params)
     render json: course, code: :ok
   end
 
