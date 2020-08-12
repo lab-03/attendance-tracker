@@ -10,6 +10,7 @@ class StudentVerify < CommandBase
       attendance.verified = student_verification["status"] == "success"
       if attendance.verified
         attendance.fr_score = student_verification["data"]["FRScore"] if student_verification["data"]
+        StudentVerifier::new_attendee(session, student, attendance.fr_score)
       else
         attendance.failure_message = student_verification["message"]
       end

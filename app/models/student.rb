@@ -20,6 +20,10 @@ class Student < ApplicationRecord
   validates :user, :image, :email, presence: true, on: :create
   validate :fci_mail
   # validate :image_has_one_face, on: :create
+  #
+  def name
+    "#{first_name} #{last_name}"
+  end
 
   private
 

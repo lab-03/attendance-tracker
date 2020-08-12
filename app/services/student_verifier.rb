@@ -13,4 +13,9 @@ module StudentVerifier
   def self.end_session(session_token)
     put('/qrcodes/end', headers:DEFAULT_HEADERS, body: {hash: session_token}.to_json)
   end
+
+  def self.new_attendee(session, student, fr_score)
+    params = {hash: session.token, newAttendee: {id: student.id, name: student.name, FRScore: fr_score}}
+    post('/attend', headers: DEFAULT_HEADERS, body: params.to_json)
+  end
 end
