@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       post :add_device_token
     end
   end
+  resources :answers, only: [:create]
   # post :create_session, to: "sessions#create"
   mount_devise_token_auth_for 'User', at: 'auth'
   # resources :users
