@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :sessions, param: :token, only: [:index, :show, :create] do
     member do
       post :attend
+      post :interactive_quiz
       post :end
       get :report
     end

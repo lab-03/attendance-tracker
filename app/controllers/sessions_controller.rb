@@ -24,13 +24,14 @@ class SessionsController < ApplicationController
   end
 
   def interactive_quiz
-    quiz = InteractiveQuiz.new(quiz_params)
+    quiz = @session.interactive_quizzes.new(quiz_params)
     unless quiz.valid?
       render json: quiz.errors.full_messages.join(", "), code: 422
       return
     end
-    SendInteractiveQuizJob.perform_async(@session.id, quiz_params)
-    render json: "Sending the Question/s to the attended students", code: :ok
+    quiz.save!
+    SendInteractiveQuizJob.perform_async(@session.id, quiz.id)
+    render json: {status: "success", message: "sending the quiz to the attended students"}, code: :ok
   end
 
   def get_quiz_result

@@ -28,7 +28,11 @@ class Question < ApplicationRecord
 
   scope :by_type, ->(type) { where(question_type: type) }
   scope :by_typeable, ->(typeable) { where(typeable: typeable) }
-
+  scope :feed_back_questions, -> do
+    by_type("feed_back").map do |q|
+      q.attributes.except "id", "created_at", "updated_at", "ownerable_id", "ownerable_type"
+    end
+  end
   def average_rating
     answers.average(:rating)
   end

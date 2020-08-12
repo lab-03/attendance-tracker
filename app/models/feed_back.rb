@@ -21,6 +21,10 @@ class FeedBack < ApplicationRecord
   accepts_nested_attributes_for :questions, allow_destroy: true
 
 
+  def self.main_questions
+    Question.feed_back_questions
+  end
+
 
   def notification_json
     {
