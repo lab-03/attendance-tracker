@@ -1,5 +1,18 @@
+ActionMailer::Base.smtp_settings = {
+    :user_name => 'apikey',
+    :password => ENV["SEND_GRID_PASSWORD"],
+    :domain => 'lab-3.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 465,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+}
+
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+
+  routes.default_url_options[:host] = 'https://a-tracker.herokuapp.com/'
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -50,8 +63,8 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "attendance_tracker_production"
+  config.active_job.queue_adapter     = :sidekiq
+  config.active_job.queue_name_prefix = "attendance_tracker_production"
 
   config.action_mailer.perform_caching = false
 
