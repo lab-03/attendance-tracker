@@ -14,6 +14,10 @@ class StudentsController < ApplicationController
     render json: StudentSerializer.new(@student).serializable_hash
   end
 
+  def profile
+    render json: @current_userable, status: :ok
+  end
+
   # POST /students
 
 

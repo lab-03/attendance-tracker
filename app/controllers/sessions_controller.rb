@@ -57,6 +57,11 @@ class SessionsController < ApplicationController
     end
   end
 
+  def add_attendance
+    attendance =  Attendance.find_or_create_by(verified: true, student_id: params[:student_id])
+    render json: attendance, status: :ok
+  end
+
 
   def feedback
     render json: (@session.ended_at.present? ? @session.feedback : "Session has not finished yet!"), code: :ok
@@ -91,7 +96,7 @@ class SessionsController < ApplicationController
   def quiz_params
     params.require(:interactive_quiz).permit(
         :name, :ended_at,
-        questions_attributes: [:text, :is_rating, :is_text, choices_attributes: [:text, :correct]]
+        questions_attributes: [:text, :is_rating, :is_text, choices_attributes: [:text, :correct, :choice_num]]
     )
   end
 
