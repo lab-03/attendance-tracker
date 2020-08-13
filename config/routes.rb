@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :lecturers
-  resources :students
+  resources :students do
+    member do
+      get :profile
+    end
+  end
   resources :courses, only: [:index, :show, :create] do
     member do
       get :report
@@ -13,6 +17,7 @@ Rails.application.routes.draw do
       post :interactive_quiz
       post :end
       get :report
+      post :add_attendance
       post :invalidate_attendance
     end
   end
