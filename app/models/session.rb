@@ -66,6 +66,8 @@ class Session < ApplicationRecord
     attendances.where(verified: true).pluck(:student_id).uniq
   end
 
+
+
   private
 
   def student_user_id(student)
