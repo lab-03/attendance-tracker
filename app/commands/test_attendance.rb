@@ -16,7 +16,8 @@ class TestAttendance < CommandBase
 
 
   def verification_params
-    {hash: "test", latitude: 1.1, longitude: 2.2}
+    {hash: "test", latitude: 1.1, longitude: 2.2, original_face: "https://bit.ly/3fJesao",
+     captured_face: "https://bit.ly/33F93Pq"}
   end
 
 end
