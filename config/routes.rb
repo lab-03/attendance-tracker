@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   resources :questions, only: [:show, :index]
   # post :create_session, to: "sessions#create"
   mount_devise_token_auth_for 'User', at: 'auth'
-  # resources :users
+
+  get '/loaderio-aeff162132428bc8d79eb24dd57e7334/', to: redirect("/loaderio-aeff162132428bc8d79eb24dd57e7334.txt")
+  # resources :use
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
