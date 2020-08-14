@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :answers, only: [:create]
   resources :questions, only: [:show, :index]
   resources :load_tests, only: :create
+  resources :feed_backs, only: :show
   # post :create_session, to: "sessions#create"
   mount_devise_token_auth_for 'User', at: 'auth'
 

@@ -63,9 +63,6 @@ class SessionsController < ApplicationController
   end
 
 
-  def feedback
-    render json: (@session.ended_at.present? ? @session.feedback : "Session has not finished yet!"), code: :ok
-  end
 
   def report
     render json: @session, serializer: SessionReportSerializer, code: :ok

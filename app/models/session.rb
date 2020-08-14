@@ -45,7 +45,6 @@ class Session < ApplicationRecord
 
 
   def end_session
-    return true unless ended_at.nil?
     update!(ended_at: DateTime.now)
     send_feed_back_after_end
   end
