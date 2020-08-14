@@ -39,7 +39,7 @@ class StudentVerify < CommandBase
         longitude: params[:long],
     }
     if params[:captured_face].present?
-      base_hash.merge!({captured_face: params[:captured_face], original_face: student.image_url})
+        base_hash.merge!({captured_face: params[:captured_face], original_face: student.image_url})
     else
       base_hash
     end
