@@ -20,4 +20,12 @@ class Course < ApplicationRecord
 
 
   validates :name, presence: true
+
+  after_create :add_students
+
+  private
+
+  def add_students
+    course_groups.create!.student_ids = Student.pluck :id
+  end
 end
