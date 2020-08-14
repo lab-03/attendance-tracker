@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     end
   end
   resources :answers, only: [:create]
+  resources :questions, only: [:show, :index]
   # post :create_session, to: "sessions#create"
   mount_devise_token_auth_for 'User', at: 'auth'
   # resources :users
