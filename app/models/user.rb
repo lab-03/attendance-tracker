@@ -70,8 +70,16 @@ class User < ApplicationRecord
     (device_type.present? ? device_tokens.by_device_type(device_type) : device_tokens).pluck(:token)
   end
 
-  def self.get_notification_tokens(ids)
+  # def self.get_notification_tokens(ids)
+  #
+  # end
 
+  def to_json
+    UserSerializer.new(self).to_json
+  end
+
+  def image
+    userable.image_url if userable.respond_to? :image_url
   end
 
   private

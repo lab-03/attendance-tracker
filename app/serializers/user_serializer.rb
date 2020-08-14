@@ -42,5 +42,5 @@
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
 class UserSerializer < ActiveModel::Serializer
-  attributes :first_name, :last_name, :image , :email, :userable_type, :userable_id
+  attributes :first_name, :last_name, :image , :email, :userable_type, :userable_id, :id, :phone, :uid
 end
