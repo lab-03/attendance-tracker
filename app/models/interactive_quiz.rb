@@ -60,7 +60,7 @@ class InteractiveQuiz < ApplicationRecord
         data: {
             type: "interactive_quiz",
             id: self.id,
-            question_ids: question_ids
+            question_ids: question_ids.first
         }
     }
   end
