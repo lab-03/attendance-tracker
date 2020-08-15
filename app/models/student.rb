@@ -12,6 +12,7 @@ class Student < ApplicationRecord
   include UserableLogic
   include ImageUploader::Attachment(:image)
   has_many :attendances
+  has_many :answers, as: :ownerable
 
   has_many :course_group_students
   has_many :course_groups, through: :course_group_students

@@ -9,7 +9,26 @@
 #  user_id    :bigint
 #
 class StudentSerializer < ActiveModel::Serializer
-  attributes :first_name, :last_name, :image , :email,  :user_id
+  attributes :first_name, :last_name, :image, :email, :user_id
   has_many :course_groups
   has_many :courses
+
+  def attended
+    object.attendances.where(verified: true).size
+  rescue => e
+    0
+  end
+
+  def absent
+    sessions_count = object.courses.map(&:session_ids).flatten.uniq.size
+    attended = object.attendances.where(verified: true).size
+    sessions_count - attended
+  rescue => e
+    0
+  end
+
+  def participated
+    object.answers.size
+  end
+
 end

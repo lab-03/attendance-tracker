@@ -17,6 +17,7 @@ class Course < ApplicationRecord
   has_many :lecturers, through: :lecturer_courses
 
   has_many :sessions, as: :classable
+  has_many :attendances, through: :sessions
 
 
   validates :name, presence: true
