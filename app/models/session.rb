@@ -30,7 +30,7 @@ class Session < ApplicationRecord
 
   belongs_to :lecturer
   belongs_to :classable, polymorphic: true
-  has_many :attendances
+  has_many :attendances, dependent: :destroy
   has_one :feed_back, dependent: :destroy
   accepts_nested_attributes_for :feed_back
 
