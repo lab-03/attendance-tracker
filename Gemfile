@@ -23,7 +23,7 @@ gem 'puma', '~> 4.3'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem "shrine", "~> 3.0"
+gem "shrine", "~> 3.3"
 gem "aws-sdk-s3", "~> 1.14"
 
 
