@@ -89,4 +89,4 @@ gem 'httparty'
 gem "fcm"
 
 #for background jobs
-gem 'sidekiq', '~> 6.1.0'
+gem 'sidekiq', '~> 6.4.0'
